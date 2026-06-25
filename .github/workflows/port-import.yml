@@ -21,14 +21,25 @@ jobs:
           cd production-config
           tar -czf ../production-config.tar.gz .
 
+      - name: Create Port CLI config
+        run: |
+          mkdir -p ~/.port
+          cat > ~/.port/config.yaml << EOF
+          default_org: sam-testing
+          organizations:
+            sam-testing:
+              client_id: ${{ secrets.PORT_CLIENT_ID }}
+              client_secret: ${{ secrets.PORT_CLIENT_SECRET }}
+              api_url: https://api.us.getport.io/v1
+          backend:
+            url: https://api.us.getport.io/v1
+            timeout: 300
+          EOF
+
       - name: Import to Port
         run: |
           port import \
             --input production-config.tar.gz \
-            --target-api-url https://api.us.getport.io/v1 \
-            --target-client-id ${{ secrets.PORT_CLIENT_ID }} \
-            --target-client-secret ${{ secrets.PORT_CLIENT_SECRET }} \
-            --include blueprints \
             --skip-entities \
             --yes \
             --verbose
