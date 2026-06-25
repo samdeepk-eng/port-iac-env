@@ -16,20 +16,13 @@ jobs:
       - name: Install Port CLI
         run: npm install -g @port-experimental/port-cli
       
-      - name: Create Port config
-        run: |
-          mkdir -p ~/.port
-          cat > ~/.port/config.yaml << 'EOF'
-          default_org: production
-          organizations:
-            production:
-              client_id: ${{ secrets.PORT_CLIENT_ID }}
-              client_secret: ${{ secrets.PORT_CLIENT_SECRET }}
-              api_url: https://api.us.getport.io/v1
-          EOF
-      
       - name: Create tar.gz from config
         run: tar -czf production-config.tar.gz production-config/
       
       - name: Import to Port
-        run: port import --input production-config.tar.gz
+        env:
+          PORT_CLIENT_ID: ${{ secrets.PORT_CLIENT_ID }}
+          PORT_CLIENT_SECRET: ${{ secrets.PORT_CLIENT_SECRET }}
+          PORT_API_URL: https://api.us.getport.io/v1
+        run: |
+          port import --input production-config.tar.gz --verbose
