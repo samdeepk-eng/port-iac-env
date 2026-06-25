@@ -28,6 +28,7 @@ jobs:
             --target-api-url https://api.us.getport.io/v1 \
             --target-client-id ${{ secrets.PORT_CLIENT_ID }} \
             --target-client-secret ${{ secrets.PORT_CLIENT_SECRET }} \
+            --include blueprints \
             --skip-entities \
             --yes \
             --verbose
