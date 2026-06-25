@@ -24,7 +24,7 @@ jobs:
         run: |
           port import \
             --input production-config.tar.gz \
-            --target-api-url https://api.us.getport.io \
+            --target-api-url https://api.us.getport.io/v1 \
             --target-client-id ${{ secrets.PORT_CLIENT_ID }} \
             --target-client-secret ${{ secrets.PORT_CLIENT_SECRET }} \
             --verbose
