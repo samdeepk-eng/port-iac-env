@@ -1,0 +1,28 @@
+name: Import Port Config
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'production-config/**'
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install Port CLI
+        run: npm install -g @port-experimental/port-cli
+      
+      - name: Create tar.gz from config
+        run: tar -czf production-config.tar.gz production-config/
+      
+      - name: Import to Port
+        run: |
+          port auth login \
+            --client-id ${{ secrets.PORT_CLIENT_ID }} \
+            --client-secret ${{ secrets.PORT_CLIENT_SECRET }} \
+            --api-url https://api.us.getport.io
+          port import --input production-config.tar.gz
