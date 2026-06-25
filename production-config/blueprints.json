@@ -23,7 +23,7 @@
         },
         "eligibility_verdict": {
           "format": "markdown",
-          "title": "Eligibility Verdict test",
+          "title": "Eligibility Verdict",
           "type": "string"
         },
         "prd": {
