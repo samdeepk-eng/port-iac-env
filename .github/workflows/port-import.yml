@@ -15,18 +15,19 @@ jobs:
       
       - name: Install Port CLI
         run: npm install -g @port-experimental/port-cli
+
       - name: Create tar.gz from config
         run: |
           cd production-config
           tar -czf ../production-config.tar.gz .
-      
-      - name: Verify secrets are set
+
+      - name: Debug tar contents
         run: |
-          echo "CLIENT_ID length: ${#PORT_CLIENT_ID}"
-          echo "CLIENT_SECRET length: ${#PORT_CLIENT_SECRET}"
-        env:
-          PORT_CLIENT_ID: ${{ secrets.PORT_CLIENT_ID }}
-          PORT_CLIENT_SECRET: ${{ secrets.PORT_CLIENT_SECRET }}
+          echo "=== Tar contents ==="
+          tar -tzf production-config.tar.gz
+          echo "=== production-config directory ==="
+          ls -la production-config/
+      
       - name: Import to Port
         run: |
           port import \
