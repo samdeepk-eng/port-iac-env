@@ -1,0 +1,1862 @@
+[
+  {
+    "blueprint": "slack_use_case",
+    "blueprintIdentifier": "slack_use_case",
+    "createdAt": "2026-06-08T18:44:32.519Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "id": "slack_use_case_readiness",
+    "identifier": "slack_use_case_readiness",
+    "levels": [
+      {
+        "color": "lightGray",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "description": "The entity includes enough Slack metadata to trace back to the source message.",
+        "identifier": "has_slack_source",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "isNotEmpty",
+              "property": "sourceChannelId"
+            },
+            {
+              "operator": "isNotEmpty",
+              "property": "sourceMessageTs"
+            },
+            {
+              "operator": "isNotEmpty",
+              "property": "rawMessage"
+            }
+          ]
+        },
+        "title": "Has Slack source"
+      },
+      {
+        "description": "The request has a concise summary for triage and search.",
+        "identifier": "has_summary",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "isNotEmpty",
+              "property": "summary"
+            }
+          ]
+        },
+        "title": "Has normalized summary"
+      },
+      {
+        "description": "The request has implementation target details and is marked ready for Cursor.",
+        "identifier": "ready_for_cursor",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "=",
+              "property": "status",
+              "value": "ready_for_cursor"
+            },
+            {
+              "operator": "isNotEmpty",
+              "property": "acceptanceCriteria"
+            },
+            {
+              "operator": "isNotEmpty",
+              "property": "targetRepositoryUrl"
+            },
+            {
+              "operator": "isNotEmpty",
+              "property": "cursorPrompt"
+            }
+          ]
+        },
+        "title": "Ready for Cursor"
+      }
+    ],
+    "title": "Use Case Readiness",
+    "updatedAt": "2026-06-08T18:49:01.294Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "organization",
+    "blueprintIdentifier": "organization",
+    "createdAt": "2026-06-08T13:58:12.819Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "id": "org_reliability_health",
+    "identifier": "org_reliability_health",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "identifier": "github_failure_rate_under_5",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "monthly_workflow_failure_rate",
+              "value": 5
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 5%"
+      },
+      {
+        "identifier": "github_failure_rate_under_15",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "monthly_workflow_failure_rate",
+              "value": 15
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 15%"
+      },
+      {
+        "identifier": "github_failure_rate_not_degrading",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "failure_rate_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "Workflow failure rate not degrading"
+      },
+      {
+        "identifier": "github_failure_rate_under_30",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "monthly_workflow_failure_rate",
+              "value": 30
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 30%"
+      }
+    ],
+    "title": "Reliability Health",
+    "updatedAt": "2026-06-08T13:58:36.208Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "organization",
+    "blueprintIdentifier": "organization",
+    "createdAt": "2026-06-08T13:58:14.086Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "id": "org_delivery_performance",
+    "identifier": "org_delivery_performance",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "identifier": "github_good_throughput",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_per_service_last_month",
+              "value": 20
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 5/week per service"
+      },
+      {
+        "identifier": "github_cycle_time_under_24h",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 24
+            }
+          ]
+        },
+        "title": "Avg PR cycle time \u003c 24h"
+      },
+      {
+        "identifier": "github_cycle_time_not_degrading",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "github_cycle_time_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "PR cycle time not degrading"
+      },
+      {
+        "identifier": "github_excellent_throughput",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_per_service_last_month",
+              "value": 40
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 10/week per service"
+      },
+      {
+        "identifier": "github_has_merged_prs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_per_service_last_month",
+              "value": 8
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 2/week per service"
+      },
+      {
+        "identifier": "github_throughput_not_degrading",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "github_throughput_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "Throughput not degrading"
+      },
+      {
+        "identifier": "github_low_stale_prs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_stale_pr_share_percent",
+              "value": 10
+            }
+          ]
+        },
+        "title": "Stale PR share ≤ 10%"
+      },
+      {
+        "identifier": "github_cycle_time_under_1h",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 1
+            }
+          ]
+        },
+        "title": "Avg PR cycle time \u003c 1h"
+      },
+      {
+        "identifier": "github_cycle_time_under_7d",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 168
+            }
+          ]
+        },
+        "title": "Avg PR cycle time \u003c 7 days"
+      }
+    ],
+    "title": "Delivery Performance",
+    "updatedAt": "2026-06-08T13:58:36.208Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "service",
+    "blueprintIdentifier": "service",
+    "createdAt": "2026-06-08T13:58:12.640Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "id": "production_readiness",
+    "identifier": "production_readiness",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "identifier": "github_has_url",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "isNotEmpty",
+              "property": "github_url"
+            }
+          ]
+        },
+        "title": "Has repository URL"
+      },
+      {
+        "identifier": "github_has_readme",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "isNotEmpty",
+              "property": "github_readme"
+            }
+          ]
+        },
+        "title": "Has README"
+      },
+      {
+        "identifier": "github_active_repo_7d",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_days_since_last_push",
+              "value": 7
+            }
+          ]
+        },
+        "title": "Active repo (pushed in last 7 days)"
+      },
+      {
+        "identifier": "github_has_codeowners",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "isNotEmpty",
+              "property": "github_codeowners"
+            }
+          ]
+        },
+        "title": "Has CODEOWNERS"
+      },
+      {
+        "identifier": "github_has_pr_template",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "isNotEmpty",
+              "property": "github_pr_template"
+            }
+          ]
+        },
+        "title": "Has PR template"
+      },
+      {
+        "identifier": "github_active_repo_30d",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_days_since_last_push",
+              "value": 30
+            }
+          ]
+        },
+        "title": "Active repo (pushed in last 30 days)"
+      },
+      {
+        "identifier": "github_private_visibility",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "=",
+              "property": "github_visibility",
+              "value": "private"
+            }
+          ]
+        },
+        "title": "Private repository visibility"
+      },
+      {
+        "description": "Service must have a dedicated owning team — default team does not count",
+        "identifier": "github_has_team",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "isNotEmpty",
+              "property": "$team"
+            },
+            {
+              "operator": "doesNotContains",
+              "property": "$team",
+              "value": "default-team"
+            },
+            {
+              "operator": "doesNotContains",
+              "property": "$team",
+              "value": "default_team"
+            }
+          ]
+        },
+        "title": "Has team assigned"
+      },
+      {
+        "identifier": "github_has_language",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "isNotEmpty",
+              "property": "github_language"
+            }
+          ]
+        },
+        "title": "Has language defined"
+      },
+      {
+        "identifier": "github_has_gitignore",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "isNotEmpty",
+              "property": "github_gitignore"
+            }
+          ]
+        },
+        "title": "Has .gitignore"
+      },
+      {
+        "identifier": "github_has_criticality",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "isNotEmpty",
+              "property": "criticality"
+            }
+          ]
+        },
+        "title": "Has criticality defined"
+      }
+    ],
+    "title": "Production Readiness",
+    "updatedAt": "2026-06-15T16:10:08.413Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "service",
+    "blueprintIdentifier": "service",
+    "createdAt": "2026-06-08T13:58:14.531Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "id": "reliability_health",
+    "identifier": "reliability_health",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "identifier": "github_failure_rate_under_30",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_monthly_workflow_failure_rate",
+              "value": 30
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 30%"
+      },
+      {
+        "identifier": "github_failure_rate_under_15",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_monthly_workflow_failure_rate",
+              "value": 15
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 15%"
+      },
+      {
+        "identifier": "github_failure_rate_under_5",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_monthly_workflow_failure_rate",
+              "value": 5
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 5%"
+      },
+      {
+        "identifier": "github_has_workflow_runs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e",
+              "property": "github_workflow_runs_30d",
+              "value": 0
+            }
+          ]
+        },
+        "title": "Has workflow runs this month"
+      },
+      {
+        "identifier": "github_failure_rate_not_degrading",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "github_failure_rate_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "Workflow failure rate not degrading"
+      }
+    ],
+    "title": "Reliability Health",
+    "updatedAt": "2026-06-08T15:04:44.446Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "service",
+    "blueprintIdentifier": "service",
+    "createdAt": "2026-06-08T13:58:14.672Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "id": "dora_deploy_freq",
+    "identifier": "dora_deploy_freq",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "description": "DORA High tier",
+        "identifier": "github_svc_df_high",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "deployment_frequency",
+              "value": 1
+            }
+          ]
+        },
+        "title": "Deploys at least weekly (\u003e= 1/week)"
+      },
+      {
+        "description": "DORA Medium tier",
+        "identifier": "github_svc_df_medium",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "deployment_frequency",
+              "value": 0.25
+            }
+          ]
+        },
+        "title": "Deploys at least monthly (\u003e= 0.25/week)"
+      },
+      {
+        "description": "DORA Elite tier",
+        "identifier": "github_svc_df_elite",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "deployment_frequency",
+              "value": 7
+            }
+          ]
+        },
+        "title": "Deploys at least daily (\u003e= 7/week)"
+      }
+    ],
+    "title": "Deployment Frequency",
+    "updatedAt": "2026-06-08T15:04:44.446Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "service",
+    "blueprintIdentifier": "service",
+    "createdAt": "2026-06-08T13:58:14.922Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "id": "delivery_performance",
+    "identifier": "delivery_performance",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "identifier": "github_low_stale_prs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_stale_pr_share_percent",
+              "value": 10
+            }
+          ]
+        },
+        "title": "Stale PR share ≤ 10%"
+      },
+      {
+        "identifier": "github_cycle_time_under_24h",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 24
+            }
+          ]
+        },
+        "title": "PR cycle time \u003c 24h"
+      },
+      {
+        "identifier": "github_excellent_open_pr_management",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_open_prs",
+              "value": 3
+            }
+          ]
+        },
+        "title": "Open PRs ≤ 3"
+      },
+      {
+        "identifier": "github_cycle_time_under_7d",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 168
+            }
+          ]
+        },
+        "title": "MR cycle time \u003c 7 days"
+      },
+      {
+        "identifier": "github_cycle_time_under_1h",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 1
+            }
+          ]
+        },
+        "title": "PR cycle time \u003c 1h"
+      },
+      {
+        "identifier": "github_good_throughput",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_last_month",
+              "value": 20
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 5/week"
+      },
+      {
+        "identifier": "github_excellent_throughput",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_last_month",
+              "value": 40
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 10/week"
+      },
+      {
+        "identifier": "github_minimal_stale_prs",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_stale_prs_7d",
+              "value": 1
+            }
+          ]
+        },
+        "title": "Stale PRs ≤ 1"
+      },
+      {
+        "identifier": "github_no_stale_prs",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "=",
+              "property": "github_stale_prs_7d",
+              "value": 0
+            }
+          ]
+        },
+        "title": "Stale PRs = 0"
+      },
+      {
+        "identifier": "github_manageable_open_prs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_open_prs",
+              "value": 8
+            }
+          ]
+        },
+        "title": "Open PRs ≤ 8"
+      },
+      {
+        "identifier": "github_has_merged_prs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_last_month",
+              "value": 8
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 2/week"
+      },
+      {
+        "identifier": "github_good_open_pr_management",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_open_prs",
+              "value": 5
+            }
+          ]
+        },
+        "title": "Open PRs ≤ 5"
+      },
+      {
+        "identifier": "github_cycle_time_not_degrading",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "github_cycle_time_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "PR cycle time not degrading"
+      },
+      {
+        "identifier": "github_throughput_not_degrading",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "github_throughput_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "Throughput not degrading"
+      }
+    ],
+    "title": "Delivery Performance",
+    "updatedAt": "2026-06-08T15:04:44.446Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "service",
+    "blueprintIdentifier": "service",
+    "createdAt": "2026-06-08T13:58:15.494Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "id": "dora_lead_time",
+    "identifier": "dora_lead_time",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "description": "DORA Medium tier",
+        "identifier": "github_svc_lt_medium",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_lead_time_for_change",
+              "value": 720
+            }
+          ]
+        },
+        "title": "Lead time under 1 month (\u003c 720h)"
+      },
+      {
+        "description": "DORA High tier",
+        "identifier": "github_svc_lt_high",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_lead_time_for_change",
+              "value": 168
+            }
+          ]
+        },
+        "title": "Lead time under 1 week (\u003c 168h)"
+      },
+      {
+        "description": "DORA Elite tier",
+        "identifier": "github_svc_lt_elite",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_lead_time_for_change",
+              "value": 24
+            }
+          ]
+        },
+        "title": "Lead time under 1 day (\u003c 24h)"
+      }
+    ],
+    "title": "Lead Time for Changes",
+    "updatedAt": "2026-06-08T15:04:44.446Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "_team",
+    "blueprintIdentifier": "_team",
+    "createdAt": "2026-06-08T13:58:14.084Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "id": "team_dora_lead_time",
+    "identifier": "team_dora_lead_time",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "description": "DORA Medium tier",
+        "identifier": "github_team_lt_medium",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_lead_time_for_change",
+              "value": 720
+            }
+          ]
+        },
+        "title": "Lead time under 1 month (\u003c 720h)"
+      },
+      {
+        "description": "DORA High tier",
+        "identifier": "github_team_lt_high",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_lead_time_for_change",
+              "value": 168
+            }
+          ]
+        },
+        "title": "Lead time under 1 week (\u003c 168h)"
+      },
+      {
+        "description": "DORA Elite tier",
+        "identifier": "github_team_lt_elite",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_lead_time_for_change",
+              "value": 24
+            }
+          ]
+        },
+        "title": "Lead time under 1 day (\u003c 24h)"
+      }
+    ],
+    "title": "Lead Time for Changes",
+    "updatedAt": "2026-06-08T13:58:36.208Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "_team",
+    "blueprintIdentifier": "_team",
+    "createdAt": "2026-06-08T13:58:14.104Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "filter": {
+      "combinator": "and",
+      "conditions": [
+        {
+          "operator": "=",
+          "property": "type",
+          "value": "group"
+        }
+      ]
+    },
+    "id": "group_reliability_health",
+    "identifier": "group_reliability_health",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "identifier": "github_failure_rate_under_30",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "monthly_workflow_failure_rate",
+              "value": 30
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 30%"
+      },
+      {
+        "identifier": "github_failure_rate_under_15",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "monthly_workflow_failure_rate",
+              "value": 15
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 15%"
+      },
+      {
+        "identifier": "github_failure_rate_not_degrading",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "failure_rate_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "Workflow failure rate not degrading"
+      },
+      {
+        "identifier": "github_failure_rate_under_5",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "monthly_workflow_failure_rate",
+              "value": 5
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 5%"
+      }
+    ],
+    "title": "Reliability Health (Group)",
+    "updatedAt": "2026-06-08T13:58:36.208Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "_team",
+    "blueprintIdentifier": "_team",
+    "createdAt": "2026-06-08T13:58:14.220Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "id": "team_dora_deploy_freq",
+    "identifier": "team_dora_deploy_freq",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "description": "DORA Medium tier",
+        "identifier": "github_team_df_medium",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "deployment_frequency_per_service",
+              "value": 0.25
+            }
+          ]
+        },
+        "title": "Deploys at least monthly per service (\u003e= 0.25/week)"
+      },
+      {
+        "description": "DORA High tier",
+        "identifier": "github_team_df_high",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "deployment_frequency_per_service",
+              "value": 1
+            }
+          ]
+        },
+        "title": "Deploys at least weekly per service (\u003e= 1/week)"
+      },
+      {
+        "description": "DORA Elite tier",
+        "identifier": "github_team_df_elite",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "deployment_frequency_per_service",
+              "value": 7
+            }
+          ]
+        },
+        "title": "Deploys at least daily per service (\u003e= 7/week)"
+      }
+    ],
+    "title": "Deployment Frequency",
+    "updatedAt": "2026-06-08T13:58:36.208Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "_team",
+    "blueprintIdentifier": "_team",
+    "createdAt": "2026-06-08T13:58:14.248Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "filter": {
+      "combinator": "and",
+      "conditions": [
+        {
+          "operator": "=",
+          "property": "type",
+          "value": "team"
+        }
+      ]
+    },
+    "id": "team_reliability_health",
+    "identifier": "team_reliability_health",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "identifier": "github_failure_rate_under_30",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "monthly_workflow_failure_rate",
+              "value": 30
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 30%"
+      },
+      {
+        "identifier": "github_has_workflow_runs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e",
+              "property": "github_workflow_runs_30d",
+              "value": 0
+            }
+          ]
+        },
+        "title": "Has workflow runs this month"
+      },
+      {
+        "identifier": "github_failure_rate_under_15",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "monthly_workflow_failure_rate",
+              "value": 15
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 15%"
+      },
+      {
+        "identifier": "github_failure_rate_not_degrading",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "failure_rate_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "Workflow failure rate not degrading"
+      },
+      {
+        "identifier": "github_failure_rate_under_5",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "monthly_workflow_failure_rate",
+              "value": 5
+            }
+          ]
+        },
+        "title": "Workflow failure rate \u003c 5%"
+      }
+    ],
+    "title": "Reliability Health",
+    "updatedAt": "2026-06-08T13:58:36.208Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "_team",
+    "blueprintIdentifier": "_team",
+    "createdAt": "2026-06-08T13:58:14.383Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "filter": {
+      "combinator": "and",
+      "conditions": [
+        {
+          "operator": "=",
+          "property": "type",
+          "value": "team"
+        }
+      ]
+    },
+    "id": "team_delivery_performance",
+    "identifier": "team_delivery_performance",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "identifier": "github_has_merged_prs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_per_service_last_month",
+              "value": 8
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 2/week per service"
+      },
+      {
+        "identifier": "github_cycle_time_under_7d",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 168
+            }
+          ]
+        },
+        "title": "PR cycle time \u003c 7 days"
+      },
+      {
+        "identifier": "github_low_stale_prs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_stale_pr_share_percent",
+              "value": 10
+            }
+          ]
+        },
+        "title": "Stale PR share ≤ 10%"
+      },
+      {
+        "identifier": "github_manageable_open_prs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_open_prs_per_service",
+              "value": 8
+            }
+          ]
+        },
+        "title": "Open PRs ≤ 8 per service"
+      },
+      {
+        "identifier": "github_cycle_time_under_24h",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 24
+            }
+          ]
+        },
+        "title": "PR cycle time \u003c 24h"
+      },
+      {
+        "identifier": "github_good_throughput",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_per_service_last_month",
+              "value": 20
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 5/week per service"
+      },
+      {
+        "identifier": "github_minimal_stale_prs",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_stale_prs_per_service_7d",
+              "value": 1
+            }
+          ]
+        },
+        "title": "Stale PRs ≤ 1 per service"
+      },
+      {
+        "identifier": "github_good_open_pr_management",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_open_prs_per_service",
+              "value": 5
+            }
+          ]
+        },
+        "title": "Open PRs ≤ 5 per service"
+      },
+      {
+        "identifier": "github_throughput_not_degrading",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "github_throughput_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "Throughput not degrading"
+      },
+      {
+        "identifier": "github_cycle_time_under_1h",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 1
+            }
+          ]
+        },
+        "title": "PR cycle time \u003c 1h"
+      },
+      {
+        "identifier": "github_excellent_throughput",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_per_service_last_month",
+              "value": 40
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 10/week per service"
+      },
+      {
+        "identifier": "github_excellent_open_pr_management",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_open_prs_per_service",
+              "value": 3
+            }
+          ]
+        },
+        "title": "Open PRs ≤ 3 per service"
+      },
+      {
+        "identifier": "github_no_stale_prs",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "=",
+              "property": "github_stale_prs_per_service_7d",
+              "value": 0
+            }
+          ]
+        },
+        "title": "Stale PRs = 0 per service"
+      },
+      {
+        "identifier": "github_cycle_time_not_degrading",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "github_cycle_time_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "PR cycle time not degrading"
+      }
+    ],
+    "title": "Delivery Performance",
+    "updatedAt": "2026-06-08T13:58:36.208Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "blueprint": "_team",
+    "blueprintIdentifier": "_team",
+    "createdAt": "2026-06-08T13:58:15.247Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "filter": {
+      "combinator": "and",
+      "conditions": [
+        {
+          "operator": "=",
+          "property": "type",
+          "value": "group"
+        }
+      ]
+    },
+    "id": "group_delivery_performance",
+    "identifier": "group_delivery_performance",
+    "levels": [
+      {
+        "color": "paleBlue",
+        "title": "Basic"
+      },
+      {
+        "color": "bronze",
+        "title": "Bronze"
+      },
+      {
+        "color": "silver",
+        "title": "Silver"
+      },
+      {
+        "color": "gold",
+        "title": "Gold"
+      }
+    ],
+    "rules": [
+      {
+        "identifier": "github_has_merged_prs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_per_service_last_month",
+              "value": 8
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 2/week per service"
+      },
+      {
+        "identifier": "github_cycle_time_under_7d",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 168
+            }
+          ]
+        },
+        "title": "Avg PR cycle time \u003c 7 days"
+      },
+      {
+        "identifier": "github_low_stale_prs",
+        "level": "Bronze",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c=",
+              "property": "github_stale_pr_share_percent",
+              "value": 10
+            }
+          ]
+        },
+        "title": "Stale PR share ≤ 10%"
+      },
+      {
+        "identifier": "github_cycle_time_under_24h",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 24
+            }
+          ]
+        },
+        "title": "Avg PR cycle time \u003c 24h"
+      },
+      {
+        "identifier": "github_good_throughput",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_per_service_last_month",
+              "value": 20
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 5/week per service"
+      },
+      {
+        "identifier": "github_throughput_not_degrading",
+        "level": "Silver",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "github_throughput_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "Throughput not degrading"
+      },
+      {
+        "identifier": "github_cycle_time_under_1h",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003c",
+              "property": "github_pr_cycle_time",
+              "value": 1
+            }
+          ]
+        },
+        "title": "Avg PR cycle time \u003c 1h"
+      },
+      {
+        "identifier": "github_excellent_throughput",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "\u003e=",
+              "property": "github_merged_prs_per_service_last_month",
+              "value": 40
+            }
+          ]
+        },
+        "title": "Merged PRs ≥ 10/week per service"
+      },
+      {
+        "identifier": "github_cycle_time_not_degrading",
+        "level": "Gold",
+        "query": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "operator": "!=",
+              "property": "github_cycle_time_trend",
+              "value": "Degrading"
+            }
+          ]
+        },
+        "title": "PR cycle time not degrading"
+      }
+    ],
+    "title": "Delivery Performance (Group)",
+    "updatedAt": "2026-06-08T13:58:36.208Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  }
+]

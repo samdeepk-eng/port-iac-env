@@ -1,0 +1,18 @@
+[
+  {
+    "createdAt": "2026-06-05T18:36:54.241Z",
+    "description": "Port default team created automatically during onboarding",
+    "id": "team_6rkAe5L6eLMupiAp",
+    "name": "default-team",
+    "provider": "port",
+    "updatedAt": "2026-06-05T18:36:54.241Z"
+  },
+  {
+    "createdAt": "2026-06-05T18:36:54.254Z",
+    "description": "Port default group created automatically during onboarding",
+    "id": "team_vdxkyy8YrkSfyRfc",
+    "name": "default-group",
+    "provider": "port",
+    "updatedAt": "2026-06-05T18:36:54.254Z"
+  }
+]

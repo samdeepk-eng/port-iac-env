@@ -1,0 +1,697 @@
+[
+  {
+    "createdAt": "2026-06-05T18:36:54.308Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "Add members to an existing team",
+    "icon": "Team",
+    "id": "action_3fUyZ75Smirh7S1y",
+    "identifier": "_onboard_existing_team",
+    "invocationMethod": {
+      "agent": false,
+      "body": {
+        "mapping": {
+          "blueprint": "_user",
+          "entity": {
+            "identifier": ".identifier",
+            "team": ".team + [\"{{ .entity.identifier }}\"] | unique"
+          },
+          "filter": ".identifier as $item | {{ .inputs.team_members | map(.identifier) }}  | any(. == $item)"
+        },
+        "sourceBlueprint": "_user"
+      },
+      "headers": {},
+      "method": "POST",
+      "synchronized": true,
+      "type": "WEBHOOK",
+      "url": "https://api.us.getport.io/v1/migrations"
+    },
+    "publish": true,
+    "requiredApproval": false,
+    "title": "Add team members ",
+    "trigger": {
+      "blueprintIdentifier": "_team",
+      "operation": "DAY-2",
+      "type": "self-service",
+      "userInputs": {
+        "properties": {
+          "team_members": {
+            "items": {
+              "blueprint": "_user",
+              "format": "entity",
+              "type": "string"
+            },
+            "sort": {
+              "order": "DESC",
+              "property": "$title"
+            },
+            "title": "Team members",
+            "type": "array"
+          }
+        }
+      }
+    },
+    "updatedAt": "2026-06-05T18:36:54.962Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "createdAt": "2026-06-05T18:36:54.535Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "Register your user and connect it to your user in other tools",
+    "icon": "User",
+    "id": "action_ZiPKVfOxlWaaFAI7",
+    "identifier": "_onboard_your_user",
+    "invocationMethod": {
+      "blueprintIdentifier": "_user",
+      "mapping": {
+        "icon": "DefaultBlueprint",
+        "identifier": "{{.trigger.by.user.email}}",
+        "properties": {},
+        "relations": {
+          "jira_user": "{{ .inputs.jira_user.identifier?         // .inputs.your_user.relations.jira_user }}"
+        },
+        "team": "{{.inputs.teams | (if . then map(.identifier) else [] end)}}"
+      },
+      "type": "UPSERT_ENTITY"
+    },
+    "publish": true,
+    "requiredApproval": false,
+    "title": "Register your user",
+    "trigger": {
+      "blueprintIdentifier": "_user",
+      "operation": "CREATE",
+      "type": "self-service",
+      "userInputs": {
+        "order": [
+          "teams",
+          "jira_user"
+        ],
+        "properties": {
+          "jira_user": {
+            "blueprint": "jiraUser",
+            "format": "entity",
+            "icon": "Jira",
+            "sort": {
+              "order": "ASC",
+              "property": "emailAddress"
+            },
+            "title": "Jira user",
+            "type": "string"
+          },
+          "teams": {
+            "default": {
+              "jqQuery": ".user.teamsIdentifiers"
+            },
+            "icon": "Team",
+            "items": {
+              "blueprint": "_team",
+              "format": "entity",
+              "type": "string"
+            },
+            "title": "Teams",
+            "type": "array",
+            "visible": true
+          },
+          "your_user": {
+            "blueprint": "_user",
+            "default": {
+              "jqQuery": ".user.email"
+            },
+            "format": "entity",
+            "title": "Your user",
+            "type": "string",
+            "visible": false
+          }
+        }
+      }
+    },
+    "updatedAt": "2026-06-17T16:18:18.814Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "createdAt": "2026-06-05T18:36:54.668Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "Assign service ownership to an existing team",
+    "icon": "Microservice",
+    "id": "action_mqctJfY38UOwplxk",
+    "identifier": "set_ownership",
+    "invocationMethod": {
+      "agent": false,
+      "body": {
+        "mapping": {
+          "blueprint": "service",
+          "entity": {
+            "identifier": ".identifier",
+            "team": ".relations.owning_teams + [\"{{ .entity.identifier }}\"] | unique"
+          },
+          "filter": ".identifier as $item | {{ .inputs.services_owned_by_this_team | map(.identifier) }} | any(. == $item)"
+        },
+        "sourceBlueprint": "service"
+      },
+      "headers": {
+        "RUN_ID": "{{ .run.id }}"
+      },
+      "method": "POST",
+      "synchronized": true,
+      "type": "WEBHOOK",
+      "url": "https://api.us.getport.io/v1/migrations"
+    },
+    "publish": true,
+    "requiredApproval": false,
+    "title": "Own services",
+    "trigger": {
+      "blueprintIdentifier": "_team",
+      "operation": "DAY-2",
+      "type": "self-service",
+      "userInputs": {
+        "properties": {
+          "services_owned_by_this_team": {
+            "icon": "DefaultProperty",
+            "items": {
+              "blueprint": "service",
+              "format": "entity",
+              "type": "string"
+            },
+            "title": "Services owned by this team",
+            "type": "array"
+          }
+        },
+        "required": [
+          "services_owned_by_this_team"
+        ]
+      }
+    },
+    "updatedAt": "2026-06-05T18:36:55.563Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "allowAnyoneToViewRuns": true,
+    "createdAt": "2026-06-05T18:36:54.762Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "Set relations between Teams and the \"default group\" when a Team without a parent team is updated",
+    "icon": "Team",
+    "id": "action_BnLfdgImeKd2xU4r",
+    "identifier": "set_parent_team_relations",
+    "invocationMethod": {
+      "blueprintIdentifier": "_team",
+      "mapping": {
+        "identifier": "{{ .event.diff.after.identifier }}",
+        "relations": {
+          "parent_team": "default_group"
+        }
+      },
+      "type": "UPSERT_ENTITY"
+    },
+    "publish": true,
+    "title": "Set Parent Team relations",
+    "trigger": {
+      "condition": {
+        "combinator": "and",
+        "expressions": [
+          ".diff.after != null",
+          ".diff.after.properties.type != \"group\"",
+          "(.diff.after.relations.parent_team == null) or (.diff.after.relations.parent_team == \"\")"
+        ],
+        "type": "JQ"
+      },
+      "event": {
+        "blueprintIdentifier": "_team",
+        "type": "ANY_ENTITY_CHANGE"
+      },
+      "type": "automation"
+    },
+    "updatedAt": "2026-06-05T18:36:54.762Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "allowAnyoneToViewRuns": true,
+    "createdAt": "2026-06-08T13:58:11.257Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "Set relations between Deployments and services based on the Repository",
+    "id": "action_UuaPoGvtCxDEVhs2",
+    "identifier": "set_github_deployment_relations",
+    "invocationMethod": {
+      "agent": false,
+      "body": {
+        "mapping": {
+          "blueprint": "deployment",
+          "entity": {
+            "identifier": ".identifier",
+            "relations": {
+              "service": "\"{{ .event.context.entityIdentifier }}\""
+            }
+          },
+          "filter": ".relations.github_pull_request != null and .properties.github_repo_id == \"{{ .event.diff.after.relations.github_repository }}\""
+        },
+        "sourceBlueprint": "deployment"
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "RUN_ID": "{{ .run.id }}"
+      },
+      "method": "POST",
+      "synchronized": true,
+      "type": "WEBHOOK",
+      "url": "https://api.us.getport.io/v1/migrations"
+    },
+    "publish": true,
+    "title": "Set GitHub Deployment relations",
+    "trigger": {
+      "condition": {
+        "combinator": "and",
+        "expressions": [
+          ".diff.before.relations.github_repository != .diff.after.relations.github_repository",
+          ".diff.after.relations.github_repository != null"
+        ],
+        "type": "JQ"
+      },
+      "event": {
+        "blueprintIdentifier": "service",
+        "type": "ANY_ENTITY_CHANGE"
+      },
+      "type": "automation"
+    },
+    "updatedAt": "2026-06-08T13:58:11.257Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "allowAnyoneToViewRuns": true,
+    "createdAt": "2026-06-08T13:58:11.735Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "Set relations between Pull Requests and services based on the Repository",
+    "id": "action_exRotbJK3IW48XmX",
+    "identifier": "set_pull_request_relations",
+    "invocationMethod": {
+      "agent": false,
+      "body": {
+        "mapping": {
+          "blueprint": "githubPullRequest",
+          "entity": {
+            "identifier": ".identifier",
+            "relations": {
+              "service": "\"{{ .event.context.entityIdentifier }}\""
+            }
+          },
+          "filter": ".relations.repository == \"{{ .event.diff.after.relations.github_repository }}\""
+        },
+        "sourceBlueprint": "githubPullRequest"
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "RUN_ID": "{{ .run.id }}"
+      },
+      "method": "POST",
+      "synchronized": true,
+      "type": "WEBHOOK",
+      "url": "https://api.us.getport.io/v1/migrations"
+    },
+    "publish": true,
+    "title": "Set Pull Request relations",
+    "trigger": {
+      "condition": {
+        "combinator": "and",
+        "expressions": [
+          ".diff.before.relations.github_repository != .diff.after.relations.github_repository",
+          ".diff.after.relations.github_repository != null"
+        ],
+        "type": "JQ"
+      },
+      "event": {
+        "blueprintIdentifier": "service",
+        "type": "ANY_ENTITY_CHANGE"
+      },
+      "type": "automation"
+    },
+    "updatedAt": "2026-06-08T13:58:11.735Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "allowAnyoneToViewRuns": true,
+    "createdAt": "2026-06-08T13:58:11.835Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "Set relations between Pull Requests and Users based on the Git User",
+    "id": "action_90Foq6MRSjcM5Skg",
+    "identifier": "set_pull_request_user_relations",
+    "invocationMethod": {
+      "agent": false,
+      "body": {
+        "mapping": {
+          "blueprint": "githubPullRequest",
+          "entity": {
+            "identifier": ".identifier",
+            "relations": {
+              "assignees": "if (\"{{ .event.diff.after.relations.git_hub_user }}\" as $item | .relations.git_hub_assignees | any(. == $item)) then ((.relations.assignees // []) + [\"{{ .event.context.entityIdentifier }}\"] | unique) else .relations.assignees end",
+              "creator": "if \"{{ .event.diff.after.relations.git_hub_user }}\" == .relations.git_hub_creator then \"{{ .event.context.entityIdentifier }}\" else .relations.creator end",
+              "reviewers": "if (\"{{ .event.diff.after.relations.git_hub_user }}\" as $item | .relations.git_hub_reviewers | any(. == $item)) then ((.relations.reviewers // []) + [\"{{ .event.context.entityIdentifier }}\"] | unique) else .relations.reviewers end"
+            }
+          },
+          "filter": "\"{{ .event.diff.after.relations.git_hub_user }}\" as $item | (.relations.git_hub_assignees | any(. == $item)) or ($item == .relations.git_hub_creator) or (.relations.git_hub_reviewers | any(. == $item))"
+        },
+        "sourceBlueprint": "githubPullRequest"
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "RUN_ID": "{{ .run.id }}"
+      },
+      "method": "POST",
+      "synchronized": true,
+      "type": "WEBHOOK",
+      "url": "https://api.us.getport.io/v1/migrations"
+    },
+    "publish": true,
+    "title": "Set Pull Requests User Relations",
+    "trigger": {
+      "condition": {
+        "combinator": "and",
+        "expressions": [
+          ".diff.before.relations.git_hub_user != .diff.after.relations.git_hub_user",
+          ".diff.after.relations.git_hub_user != null"
+        ],
+        "type": "JQ"
+      },
+      "event": {
+        "blueprintIdentifier": "_user",
+        "type": "ANY_ENTITY_CHANGE"
+      },
+      "type": "automation"
+    },
+    "updatedAt": "2026-06-08T13:58:11.835Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "allowAnyoneToViewRuns": true,
+    "createdAt": "2026-06-08T13:58:11.946Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "Set relations between GitHub Workflow Runs and services based on the Repository",
+    "icon": "Github",
+    "id": "action_CPGJbafTmTqLHJ35",
+    "identifier": "set_workflow_run_relations",
+    "invocationMethod": {
+      "agent": false,
+      "body": {
+        "mapping": {
+          "blueprint": "githubWorkflowRun",
+          "entity": {
+            "identifier": ".identifier",
+            "relations": {
+              "service": "\"{{ .event.context.entityIdentifier }}\""
+            }
+          },
+          "filter": ".relations.repository == \"{{ .event.diff.after.relations.github_repository }}\""
+        },
+        "sourceBlueprint": "githubWorkflowRun"
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "RUN_ID": "{{ .run.id }}"
+      },
+      "method": "POST",
+      "synchronized": true,
+      "type": "WEBHOOK",
+      "url": "https://api.us.getport.io/v1/migrations"
+    },
+    "publish": true,
+    "title": "Set GitHub Workflow Run relations",
+    "trigger": {
+      "condition": {
+        "combinator": "and",
+        "expressions": [
+          ".diff.before.relations.github_repository != .diff.after.relations.github_repository",
+          ".diff.after.relations.github_repository != null"
+        ],
+        "type": "JQ"
+      },
+      "event": {
+        "blueprintIdentifier": "service",
+        "type": "ANY_ENTITY_CHANGE"
+      },
+      "type": "automation"
+    },
+    "updatedAt": "2026-06-08T13:58:11.946Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "createdAt": "2026-06-11T14:47:46.049Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "description": "Provision a new EC2 instance on AWS",
+    "icon": "Server",
+    "id": "action_AbmEQ736owbNktYJ",
+    "identifier": "deploy_ec2",
+    "invocationMethod": {
+      "payload": {
+        "action": "{{ .action.identifier }}",
+        "context": {
+          "blueprint": "{{ .action.blueprint }}",
+          "entity": "{{ .entity.identifier }}",
+          "runId": "{{ .run.id }}"
+        },
+        "payload": {
+          "censoredProperties": "{{ .action.encryptedProperties }}",
+          "entity": "{{ .entity }}",
+          "properties": "{{ .inputs }}"
+        },
+        "resourceType": "run",
+        "status": "TRIGGERED",
+        "trigger": "{{ .trigger | {by, origin, at} }}"
+      },
+      "type": "KAFKA"
+    },
+    "publish": true,
+    "requiredApproval": false,
+    "title": "Deploy EC2 Instance",
+    "trigger": {
+      "blueprintIdentifier": "ec2_instance",
+      "operation": "CREATE",
+      "type": "self-service",
+      "userInputs": {
+        "order": [
+          "instance_name",
+          "instance_type",
+          "region",
+          "ami_id",
+          "key_pair"
+        ],
+        "properties": {
+          "ami_id": {
+            "description": "The Amazon Machine Image ID to use",
+            "title": "AMI ID",
+            "type": "string"
+          },
+          "instance_name": {
+            "description": "A name tag for the EC2 instance",
+            "title": "Instance Name",
+            "type": "string"
+          },
+          "instance_type": {
+            "description": "The EC2 instance type",
+            "enum": [
+              "t2.micro",
+              "t2.small",
+              "t2.medium",
+              "t3.micro",
+              "t3.small",
+              "t3.medium",
+              "t3.large",
+              "t3.xlarge",
+              "m5.large",
+              "m5.xlarge",
+              "c5.large",
+              "c5.xlarge"
+            ],
+            "title": "Instance Type",
+            "type": "string"
+          },
+          "key_pair": {
+            "description": "EC2 key pair for SSH access (optional)",
+            "title": "Key Pair Name",
+            "type": "string"
+          },
+          "region": {
+            "description": "The AWS region to deploy into",
+            "enum": [
+              "us-east-1",
+              "us-east-2",
+              "us-west-1",
+              "us-west-2",
+              "eu-west-1",
+              "eu-west-2",
+              "eu-central-1",
+              "ap-southeast-1",
+              "ap-southeast-2",
+              "ap-northeast-1"
+            ],
+            "title": "AWS Region",
+            "type": "string"
+          }
+        },
+        "required": [
+          "instance_name",
+          "instance_type",
+          "region",
+          "ami_id"
+        ]
+      }
+    },
+    "updatedAt": "2026-06-11T14:47:46.049Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "createdAt": "2026-06-17T16:18:18.196Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "Create a new issue in a Jira project",
+    "icon": "Jira",
+    "id": "action_wMo7UFJVqxuiQgcD",
+    "identifier": "create_an_issue",
+    "invocationMethod": {
+      "agent": false,
+      "body": {
+        "fields": {
+          "assignee": {
+            "id": "{{.inputs.assignee.relations.jira_user}}"
+          },
+          "description": "{{.inputs.description}}",
+          "issuetype": {
+            "name": "{{.inputs.issue_type}}"
+          },
+          "project": {
+            "key": "{{.inputs.project.identifier}}"
+          },
+          "summary": "{{.inputs.title}}"
+        }
+      },
+      "headers": {
+        "Authorization": "Bearer {{ .secrets.__JIRA_JIRA_ATLASSIAN_USER_TOKEN }}",
+        "Content-Type": "application/json"
+      },
+      "method": "POST",
+      "synchronized": true,
+      "type": "WEBHOOK",
+      "url": "https://api.atlassian.com/ex/jira/33f08530-afd8-42fd-82cc-1dd5ebfeece8/rest/api/2/issue"
+    },
+    "publish": true,
+    "requiredApproval": false,
+    "title": "Create an issue",
+    "trigger": {
+      "blueprintIdentifier": "jiraIssue",
+      "operation": "CREATE",
+      "type": "self-service",
+      "userInputs": {
+        "order": [
+          "project",
+          "issue_type",
+          "title",
+          "description",
+          "assignee"
+        ],
+        "properties": {
+          "assignee": {
+            "blueprint": "_user",
+            "dataset": {
+              "combinator": "and",
+              "rules": [
+                {
+                  "operator": "isNotEmpty",
+                  "property": "jira_user_id"
+                }
+              ]
+            },
+            "format": "entity",
+            "icon": "DefaultProperty",
+            "title": "Assignee",
+            "type": "string"
+          },
+          "description": {
+            "format": "markdown",
+            "icon": "DefaultProperty",
+            "title": "Description",
+            "type": "string"
+          },
+          "issue_type": {
+            "enum": [
+              "Bug",
+              "Story",
+              "Epic"
+            ],
+            "enumColors": {
+              "Bug": "red",
+              "Epic": "purple",
+              "Story": "green"
+            },
+            "icon": "DefaultProperty",
+            "title": "Issue type",
+            "type": "string"
+          },
+          "project": {
+            "blueprint": "jiraProject",
+            "format": "entity",
+            "icon": "DefaultProperty",
+            "title": "Project",
+            "type": "string"
+          },
+          "title": {
+            "icon": "DefaultProperty",
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project",
+          "issue_type",
+          "title"
+        ]
+      }
+    },
+    "updatedAt": "2026-06-17T16:18:18.690Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "createdAt": "2026-06-17T16:18:18.280Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "Set relations between Jira Issues and User",
+    "id": "action_uxNmCbggOQ0GlzUd",
+    "identifier": "set_jira_issue_user_relations",
+    "invocationMethod": {
+      "agent": false,
+      "body": {
+        "mapping": {
+          "blueprint": "jiraIssue",
+          "entity": {
+            "identifier": ".identifier",
+            "relations": {
+              "assignee": "if \"{{ .event.diff.after.relations.jira_user }}\" == .relations.jira_user_assignee then \"{{ .event.context.entityIdentifier }}\" else .relations.assignee end",
+              "reporter": "if \"{{ .event.diff.after.relations.jira_user }}\" == .relations.jira_user_reporter then \"{{ .event.context.entityIdentifier }}\" else .relations.reporter end"
+            }
+          },
+          "filter": "\"{{ .event.diff.after.relations.jira_user }}\" as $item | ($item == .relations.jira_user_reporter) or (.relations.jira_user_assignee == $item)"
+        },
+        "sourceBlueprint": "jiraIssue"
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "RUN_ID": "{{ .run.id }}"
+      },
+      "method": "POST",
+      "synchronized": true,
+      "type": "WEBHOOK",
+      "url": "https://api.us.getport.io/v1/migrations"
+    },
+    "publish": true,
+    "title": "Set Jira Issue User relations",
+    "trigger": {
+      "condition": {
+        "combinator": "and",
+        "expressions": [
+          ".diff.before.relations.jira_user != .diff.after.relations.jira_user",
+          ".diff.after.relations.jira_user != null"
+        ],
+        "type": "JQ"
+      },
+      "event": {
+        "blueprintIdentifier": "_user",
+        "type": "ANY_ENTITY_CHANGE"
+      },
+      "type": "automation"
+    },
+    "updatedAt": "2026-06-17T16:18:18.280Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  }
+]

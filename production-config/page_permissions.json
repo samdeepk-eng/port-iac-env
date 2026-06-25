@@ -1,0 +1,1133 @@
+{
+  "_ai_agents": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "_ai_conversations": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "_ai_invocations": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "_mcp_servers": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "_rule_results": {
+    "read": {
+      "roles": [
+        "Admin"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "_rules": {
+    "read": {
+      "roles": [
+        "Admin"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "_scorecards": {
+    "read": {
+      "roles": [
+        "Admin"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "_teams": {
+    "read": {
+      "roles": [
+        "Admin"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "_users": {
+    "read": {
+      "roles": [
+        "Admin"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "delivery_performance": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "deployments": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "dora_metrics": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "ec2_instances": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "ec2_instance-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "incident-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "slack_use_case-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "environments": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "githubOrganizations": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "githubPullRequests": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "githubRepositories": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "githubTeams": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "githubUsers": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "githubWorkflowRuns": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "githubWorkflows": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "incidents": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "incident-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "jiraIssues": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "ec2_instance-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "incident-moderator",
+        "jiraIssue-moderator",
+        "jiraProject-moderator",
+        "jiraUser-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "slack_use_case-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "jiraProjects": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "ec2_instance-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "incident-moderator",
+        "jiraIssue-moderator",
+        "jiraProject-moderator",
+        "jiraUser-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "slack_use_case-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "jiraUsers": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "ec2_instance-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "incident-moderator",
+        "jiraIssue-moderator",
+        "jiraProject-moderator",
+        "jiraUser-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "slack_use_case-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "manage_incidents": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "manage_my_teams_work": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "organizations": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "plan_my_day": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "reliability": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "services": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "set_up_automatic_discovery": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "slack_use_case_dashboard": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "incident-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "slack_use_case-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "slack_use_cases": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "incident-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "slack_use_case-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "standards_scorecards": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "work_items": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "ec2_instance-moderator",
+        "environment-moderator",
+        "githubOrganization-moderator",
+        "githubPullRequest-moderator",
+        "githubRepository-moderator",
+        "githubTeam-moderator",
+        "githubUser-moderator",
+        "githubWorkflow-moderator",
+        "githubWorkflowRun-moderator",
+        "incident-moderator",
+        "jiraIssue-moderator",
+        "jiraProject-moderator",
+        "jiraUser-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "slack_use_case-moderator",
+        "work_item-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  },
+  "workloads": {
+    "read": {
+      "roles": [
+        "Admin",
+        "Member",
+        "_ai_agent-moderator",
+        "_ai_conversation-moderator",
+        "_ai_invocations-moderator",
+        "_mcp_server-moderator",
+        "_rule-moderator",
+        "_rule_result-moderator",
+        "_scorecard-moderator",
+        "_team-moderator",
+        "_user-moderator",
+        "deployment-moderator",
+        "environment-moderator",
+        "organization-moderator",
+        "service-moderator",
+        "workload-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "update": {
+      "roles": [],
+      "teams": [],
+      "users": []
+    }
+  }
+}

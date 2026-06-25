@@ -1,0 +1,4149 @@
+[
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-18T15:45:39.082Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "icon": "Task",
+    "identifier": "work_item",
+    "mirrorProperties": {},
+    "relations": {
+      "service": {
+        "many": false,
+        "required": false,
+        "target": "service",
+        "title": "Service"
+      }
+    },
+    "schema": {
+      "properties": {
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "eligibility_verdict": {
+          "format": "markdown",
+          "title": "Eligibility Verdict",
+          "type": "string"
+        },
+        "prd": {
+          "format": "markdown",
+          "title": "PRD",
+          "type": "string"
+        },
+        "priority": {
+          "enum": [
+            "critical",
+            "high",
+            "medium",
+            "low"
+          ],
+          "enumColors": {
+            "critical": "red",
+            "high": "orange",
+            "low": "green",
+            "medium": "yellow"
+          },
+          "title": "Priority",
+          "type": "string"
+        },
+        "service_tier": {
+          "enum": [
+            "mission_critical",
+            "high",
+            "medium",
+            "low"
+          ],
+          "enumColors": {
+            "high": "orange",
+            "low": "green",
+            "medium": "yellow",
+            "mission_critical": "red"
+          },
+          "title": "Service Tier",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "in_progress",
+            "resolved",
+            "rejected"
+          ],
+          "enumColors": {
+            "in_progress": "orange",
+            "open": "blue",
+            "rejected": "red",
+            "resolved": "green"
+          },
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "description",
+        "priority",
+        "service_tier",
+        "status"
+      ]
+    },
+    "title": "Work Item",
+    "updatedAt": "2026-06-18T15:45:39.083Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-05T18:36:46.087Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "icon": "Deployment",
+    "identifier": "workload",
+    "mirrorProperties": {},
+    "ownership": {
+      "path": "service",
+      "type": "Inherited"
+    },
+    "relations": {
+      "environment": {
+        "many": false,
+        "required": false,
+        "target": "environment",
+        "title": "Environment"
+      },
+      "service": {
+        "many": false,
+        "required": false,
+        "target": "service",
+        "title": "Service"
+      }
+    },
+    "schema": {
+      "properties": {
+        "version": {
+          "description": "The version of the running service in this environment",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "Workload",
+    "updatedAt": "2026-06-05T18:36:53.783Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-08T18:44:13.515Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "icon": "Slack",
+    "identifier": "slack_use_case",
+    "mirrorProperties": {},
+    "ownership": {
+      "title": "Owning Teams",
+      "type": "Direct"
+    },
+    "relations": {
+      "github_repository": {
+        "description": "Optional existing Port GitHub repository entity for this request.",
+        "many": false,
+        "required": false,
+        "target": "githubRepository",
+        "title": "GitHub Repository"
+      },
+      "service": {
+        "description": "Optional Port service related to this request.",
+        "many": false,
+        "required": false,
+        "target": "service",
+        "title": "Related Service"
+      }
+    },
+    "schema": {
+      "properties": {
+        "acceptanceCriteria": {
+          "description": "Acceptance criteria gathered during triage.",
+          "format": "markdown",
+          "title": "Acceptance Criteria",
+          "type": "string"
+        },
+        "cursorPrompt": {
+          "description": "Generated or curated prompt to send to Cursor Cloud Agent.",
+          "format": "markdown",
+          "title": "Cursor Prompt",
+          "type": "string"
+        },
+        "cursorRunUrl": {
+          "description": "Link to the Cursor agent run, when one has been launched.",
+          "format": "url",
+          "title": "Cursor Run URL",
+          "type": "string"
+        },
+        "priority": {
+          "description": "Triage priority for this request.",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "urgent"
+          ],
+          "enumColors": {
+            "high": "orange",
+            "low": "lightGray",
+            "medium": "blue",
+            "urgent": "red"
+          },
+          "title": "Priority",
+          "type": "string"
+        },
+        "rawMessage": {
+          "description": "Original Slack message text.",
+          "format": "markdown",
+          "title": "Raw Slack Message",
+          "type": "string"
+        },
+        "requestType": {
+          "description": "Whether the Slack intake item is a feature request or broader use case.",
+          "enum": [
+            "feature",
+            "use-case"
+          ],
+          "enumColors": {
+            "feature": "blue",
+            "use-case": "purple"
+          },
+          "title": "Request Type",
+          "type": "string"
+        },
+        "requesterEmail": {
+          "description": "Email address of the Slack user who submitted the request, when available.",
+          "format": "email",
+          "title": "Requester Email",
+          "type": "string"
+        },
+        "requesterName": {
+          "description": "Display name of the Slack user who submitted the request.",
+          "title": "Requester Name",
+          "type": "string"
+        },
+        "sourceChannel": {
+          "description": "Human-readable Slack channel name where the request originated.",
+          "title": "Slack Channel",
+          "type": "string"
+        },
+        "sourceChannelId": {
+          "description": "Slack channel ID where the request originated.",
+          "title": "Slack Channel ID",
+          "type": "string"
+        },
+        "sourceMessageTs": {
+          "description": "Slack timestamp for the source message, used for deduplication.",
+          "title": "Slack Message TS",
+          "type": "string"
+        },
+        "sourceMessageUrl": {
+          "description": "Permalink to the source Slack message.",
+          "format": "url",
+          "title": "Slack Message URL",
+          "type": "string"
+        },
+        "status": {
+          "description": "Current lifecycle stage for this Slack-originated request.",
+          "enum": [
+            "new",
+            "triage",
+            "ready_for_cursor",
+            "in_progress",
+            "done",
+            "rejected"
+          ],
+          "enumColors": {
+            "done": "green",
+            "in_progress": "yellow",
+            "new": "lightGray",
+            "ready_for_cursor": "blue",
+            "rejected": "red",
+            "triage": "orange"
+          },
+          "title": "Status",
+          "type": "string"
+        },
+        "summary": {
+          "description": "Short normalized summary of the request.",
+          "title": "Summary",
+          "type": "string"
+        },
+        "targetBranch": {
+          "description": "Base branch or ref Cursor should use.",
+          "title": "Target Branch",
+          "type": "string"
+        },
+        "targetRepositoryUrl": {
+          "description": "Repository Cursor should use for implementation. This should point to the real demo-monorepo, not the current workspace repo.",
+          "format": "url",
+          "title": "Target Repo URL",
+          "type": "string"
+        }
+      },
+      "required": [
+        "requestType",
+        "status",
+        "sourceChannelId",
+        "sourceMessageTs",
+        "rawMessage"
+      ]
+    },
+    "title": "Slack Use Case",
+    "updatedAt": "2026-06-08T18:44:13.516Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-08T13:57:43.425Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "icon": "Github",
+    "identifier": "githubUser",
+    "mirrorProperties": {},
+    "relations": {
+      "team": {
+        "many": true,
+        "required": false,
+        "target": "githubTeam",
+        "title": "GitHub Team"
+      }
+    },
+    "schema": {
+      "properties": {
+        "email": {
+          "title": "Email",
+          "type": "string"
+        },
+        "login": {
+          "title": "Login",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "GitHub User",
+    "updatedAt": "2026-06-08T14:00:16.476Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {
+      "github_failed_workflow_runs_30d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Workflow runs that ended in failure in the last 30 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            },
+            {
+              "operator": "=",
+              "property": "conclusion",
+              "value": "failure"
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Monthly Failed Workflow Runs",
+        "type": "number"
+      },
+      "github_failed_workflow_runs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Workflow runs that ended in failure in the last 7 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            },
+            {
+              "operator": "=",
+              "property": "conclusion",
+              "value": "failure"
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Weekly Failed Workflow Runs",
+        "type": "number"
+      },
+      "github_merged_prs_last_month": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Pull requests merged in the last 30 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Monthly PR Throughput",
+        "type": "number"
+      },
+      "github_merged_prs_last_week": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Pull requests merged in the last 7 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Weekly PR Throughput",
+        "type": "number"
+      },
+      "github_open_prs": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Open pull requests",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "status",
+              "value": "open"
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Open PRs",
+        "type": "number"
+      },
+      "github_pr_cycle_time": {
+        "calculationSpec": {
+          "averageOf": "total",
+          "calculationBy": "property",
+          "func": "average",
+          "measureTimeBy": "$createdAt",
+          "property": "cycle_time_hours"
+        },
+        "description": "Average time from PR creation to merge (last month)",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Monthly PR Cycle Time",
+        "type": "number"
+      },
+      "github_pr_cycle_time_weekly": {
+        "calculationSpec": {
+          "averageOf": "total",
+          "calculationBy": "property",
+          "func": "average",
+          "measureTimeBy": "$createdAt",
+          "property": "cycle_time_hours"
+        },
+        "description": "Average time from PR creation to merge (last week)",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Weekly PR Cycle Time",
+        "type": "number"
+      },
+      "github_stale_prs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Open PRs older than 7 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "status",
+              "value": "open"
+            },
+            {
+              "operator": "notBetween",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Stale PRs (7d+)",
+        "type": "number"
+      },
+      "github_workflow_runs_30d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total workflow runs in the last 30 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Monthly Workflow Runs",
+        "type": "number"
+      },
+      "github_workflow_runs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total workflow runs in the last 7 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Weekly Workflow Runs",
+        "type": "number"
+      },
+      "services_count": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total number of services in the organization",
+        "icon": "DefaultProperty",
+        "target": "service",
+        "title": "Number of Services",
+        "type": "number"
+      }
+    },
+    "calculationProperties": {
+      "failure_rate_trend": {
+        "calculation": "((if (.properties.github_workflow_runs_30d != null and .properties.github_workflow_runs_30d != 0) then ((.properties.github_failed_workflow_runs_30d // 0) / .properties.github_workflow_runs_30d) * 100 | floor else 0 end) - (if (.properties.github_workflow_runs_7d != null and .properties.github_workflow_runs_7d != 0) then ((.properties.github_failed_workflow_runs_7d // 0) / .properties.github_workflow_runs_7d) * 100 | floor else 0 end)) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly failure rate vs monthly average — Improving, Stable, or Degrading",
+        "icon": "DefaultProperty",
+        "title": "Workflow Failure Rate Trend",
+        "type": "string"
+      },
+      "github_cycle_time_trend": {
+        "calculation": "((.properties.github_pr_cycle_time // 0) - (.properties.github_pr_cycle_time_weekly // 0)) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly vs monthly PR cycle time — Improving, Stable, or Degrading",
+        "icon": "DefaultProperty",
+        "title": "PR Cycle Time Trend",
+        "type": "string"
+      },
+      "github_merged_prs_per_service_last_month": {
+        "calculation": "if (.properties.services_count != null and .properties.services_count != 0) then (.properties.github_merged_prs_last_month / .properties.services_count) else 0 end",
+        "description": "PRs merged in the last 30 days divided by number of services in the organization",
+        "icon": "DefaultProperty",
+        "title": "Monthly PR Throughput per Service",
+        "type": "number"
+      },
+      "github_stale_pr_share_percent": {
+        "calculation": "if (.properties.github_open_prs != null and .properties.github_open_prs != 0) then (.properties.github_stale_prs_7d / .properties.github_open_prs) * 100 else 0 end",
+        "description": "Percentage of open PRs that are older than 7 days",
+        "icon": "DefaultProperty",
+        "title": "Stale PR Share (%)",
+        "type": "number"
+      },
+      "github_throughput_trend": {
+        "calculation": "((.properties.github_merged_prs_last_week // 0) * 30 - (.properties.github_merged_prs_last_month // 0) * 7) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly vs monthly PR throughput rate — Improving, Stable, or Degrading",
+        "icon": "DefaultProperty",
+        "title": "PR Throughput Trend",
+        "type": "string"
+      },
+      "monthly_workflow_failure_rate": {
+        "calculation": "if (.properties.github_workflow_runs_30d != null and .properties.github_workflow_runs_30d != 0) then ((.properties.github_failed_workflow_runs_30d // 0) / .properties.github_workflow_runs_30d) * 100 | floor else 0 end",
+        "description": "Percentage of workflow runs that failed in the last 30 days",
+        "icon": "DefaultProperty",
+        "title": "Monthly Workflow Failure Rate (%)",
+        "type": "number"
+      },
+      "weekly_workflow_failure_rate": {
+        "calculation": "if (.properties.github_workflow_runs_7d != null and .properties.github_workflow_runs_7d != 0) then ((.properties.github_failed_workflow_runs_7d // 0) / .properties.github_workflow_runs_7d) * 100 | floor else 0 end",
+        "description": "Percentage of workflow runs that failed in the last 7 days",
+        "icon": "DefaultProperty",
+        "title": "Weekly Workflow Failure Rate (%)",
+        "type": "number"
+      }
+    },
+    "createdAt": "2026-06-05T18:36:46.382Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "A logical organization grouping teams and services",
+    "icon": "Organization",
+    "identifier": "organization",
+    "mirrorProperties": {},
+    "relations": {},
+    "schema": {
+      "properties": {},
+      "required": []
+    },
+    "title": "Organization",
+    "updatedAt": "2026-06-08T14:00:38.525Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-17T16:18:13.746Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "A Jira user account",
+    "icon": "Jira",
+    "identifier": "jiraUser",
+    "mirrorProperties": {},
+    "relations": {},
+    "schema": {
+      "properties": {
+        "accountType": {
+          "description": "Type of Jira account (e.g., atlassian, customer)",
+          "title": "Account Type",
+          "type": "string"
+        },
+        "active": {
+          "description": "Whether the user account is active",
+          "title": "Active Status",
+          "type": "boolean"
+        },
+        "displayName": {
+          "description": "User's full name as displayed in Jira",
+          "title": "Display Name",
+          "type": "string"
+        },
+        "emailAddress": {
+          "description": "User's email address",
+          "format": "email",
+          "title": "Email",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "Jira User",
+    "updatedAt": "2026-06-17T16:18:16.237Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-08T13:57:45.334Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "icon": "Github",
+    "identifier": "githubWorkflow",
+    "mirrorProperties": {},
+    "relations": {
+      "repository": {
+        "many": false,
+        "required": false,
+        "target": "githubRepository",
+        "title": "Repository"
+      }
+    },
+    "schema": {
+      "properties": {
+        "createdAt": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "last_triggered_at": {
+          "format": "date-time",
+          "title": "Last Triggered At",
+          "type": "string"
+        },
+        "link": {
+          "format": "url",
+          "title": "Link",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "result": {
+          "description": "Latest run conclusion (merged from workflow-run data)",
+          "enum": [
+            "success",
+            "failure",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "neutral",
+            "stale",
+            "startup_failure"
+          ],
+          "enumColors": {
+            "action_required": "yellow",
+            "cancelled": "lightGray",
+            "failure": "red",
+            "neutral": "lightGray",
+            "skipped": "lightGray",
+            "stale": "darkGray",
+            "startup_failure": "red",
+            "success": "green",
+            "timed_out": "orange"
+          },
+          "title": "Result",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "active",
+            "deleted",
+            "disabled_fork",
+            "disabled_inactivity",
+            "disabled_manually"
+          ],
+          "enumColors": {
+            "active": "green",
+            "deleted": "red"
+          },
+          "title": "Status",
+          "type": "string"
+        },
+        "updatedAt": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "GitHub Workflow",
+    "updatedAt": "2026-06-08T14:00:33.512Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-05T18:36:42.343Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "description": "A logical conversation grouping one or more AI invocation segments",
+    "icon": "Chat",
+    "identifier": "_ai_conversation",
+    "mirrorProperties": {
+      "latest_invocation_status": {
+        "path": "latest_invocation.status",
+        "title": "Latest Invocation Status"
+      }
+    },
+    "ownership": {
+      "title": "Owning Teams",
+      "type": "Direct"
+    },
+    "relations": {
+      "asked_by": {
+        "description": "The user who started the conversation",
+        "many": false,
+        "required": false,
+        "target": "_user",
+        "title": "Asked By"
+      },
+      "latest_invocation": {
+        "description": "The most recent invocation in the conversation chain",
+        "many": false,
+        "required": false,
+        "target": "_ai_invocations",
+        "title": "Latest Invocation"
+      }
+    },
+    "schema": {
+      "properties": {
+        "asked_at": {
+          "description": "Timestamp of the most recent turn in the conversation",
+          "format": "date-time",
+          "icon": "Calendar",
+          "title": "Last Activity At",
+          "type": "string"
+        },
+        "pinned": {
+          "default": false,
+          "description": "Whether the conversation is pinned by the user",
+          "icon": "DefaultProperty",
+          "title": "Pinned",
+          "type": "boolean"
+        },
+        "source": {
+          "description": "The source of the conversation (e.g. ai-assistant, ai-agent-widget, workflow)",
+          "icon": "DefaultProperty",
+          "title": "Source",
+          "type": "string"
+        },
+        "status": {
+          "default": "active",
+          "description": "The conversation status",
+          "enum": [
+            "active",
+            "archived"
+          ],
+          "enumColors": {
+            "active": "green",
+            "archived": "lightGray"
+          },
+          "icon": "DefaultProperty",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status"
+      ]
+    },
+    "title": "AI Conversation",
+    "updatedAt": "2026-06-05T18:36:43.859Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {
+      "total_invocations": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "The number of invocations for this agent",
+        "target": "_ai_invocations",
+        "title": "Total Invocations",
+        "type": "number"
+      }
+    },
+    "calculationProperties": {},
+    "createdAt": "2026-06-05T18:36:41.853Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "icon": "Details",
+    "identifier": "_ai_agent",
+    "mirrorProperties": {},
+    "ownership": {
+      "title": "Owning Teams",
+      "type": "Direct"
+    },
+    "relations": {
+      "mcp_servers": {
+        "description": "MCP servers connected to this agent",
+        "many": true,
+        "required": false,
+        "target": "_mcp_server",
+        "title": "MCP Servers"
+      }
+    },
+    "schema": {
+      "properties": {
+        "conversation_starters": {
+          "description": "Predefined conversation starter messages to help users interact with this agent",
+          "icon": "Chat",
+          "items": {
+            "type": "string"
+          },
+          "title": "Conversation Starters",
+          "type": "array"
+        },
+        "description": {
+          "description": "Brief explanation of what this agent does",
+          "icon": "DefaultProperty",
+          "title": "Description",
+          "type": "string"
+        },
+        "execution_mode": {
+          "default": "Approval Required",
+          "description": "The execution mode for actions - Automatic or requiring approval",
+          "enum": [
+            "Automatic",
+            "Approval Required"
+          ],
+          "title": "Execution Mode",
+          "type": "string"
+        },
+        "labels": {
+          "description": "Free labels to identify specific attributes on the agent",
+          "title": "Labels",
+          "type": "object"
+        },
+        "model": {
+          "description": "The model of the agent",
+          "title": "Model",
+          "type": "string"
+        },
+        "prompt": {
+          "description": "The system prompt for the agent. Where the agent is manually invoked, a user prompt will be provided in the invocation",
+          "format": "markdown",
+          "icon": "DefaultProperty",
+          "maxLength": 5000,
+          "title": "Prompt",
+          "type": "string"
+        },
+        "provider": {
+          "description": "The provider of the agent",
+          "title": "Provider",
+          "type": "string"
+        },
+        "status": {
+          "default": "active",
+          "description": "Is the agent active (available to be run manually, or allowed to operate autonomously)",
+          "enum": [
+            "active",
+            "inactive"
+          ],
+          "enumColors": {
+            "active": "green",
+            "inactive": "red"
+          },
+          "icon": "DefaultProperty",
+          "title": "Status",
+          "type": "string"
+        },
+        "tools": {
+          "default": [
+            "^(list|get|search|track|describe)_.*"
+          ],
+          "description": "An array of tools that the agent is allowed to execute. Docs: https://docs.port.io/ai-interfaces/port-ai/api-interaction#tool-selection",
+          "icon": "DefaultProperty",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tools",
+          "type": "array"
+        }
+      },
+      "required": [
+        "tools",
+        "status",
+        "prompt"
+      ]
+    },
+    "title": "AI Agent",
+    "updatedAt": "2026-06-05T18:36:43.237Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {
+      "entity_link": {
+        "calculation": "\"/\" + .properties.blueprint + \"Entity?identifier=\" + .properties.entity",
+        "format": "url",
+        "icon": "LinkOut",
+        "title": "Entity link",
+        "type": "string"
+      }
+    },
+    "createdAt": "2026-06-05T18:36:39.558Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "description": "This blueprint represents the result of a specific rule test on an entity",
+    "icon": "Siren",
+    "identifier": "_rule_result",
+    "mirrorProperties": {
+      "blueprint": {
+        "path": "rule.scorecard.blueprint"
+      },
+      "level": {
+        "path": "rule.level"
+      },
+      "scorecard": {
+        "path": "rule.scorecard.$title"
+      }
+    },
+    "ownership": {
+      "type": "Direct"
+    },
+    "relations": {
+      "__team": {
+        "many": false,
+        "required": false,
+        "target": "_team",
+        "title": "Team",
+        "type": "rule_result_target"
+      },
+      "_organization": {
+        "many": false,
+        "required": false,
+        "target": "organization",
+        "title": "Organization",
+        "type": "rule_result_target"
+      },
+      "_service": {
+        "many": false,
+        "required": false,
+        "target": "service",
+        "title": "Service",
+        "type": "rule_result_target"
+      },
+      "_slack_use_case": {
+        "many": false,
+        "required": false,
+        "target": "slack_use_case",
+        "title": "Slack Use Case",
+        "type": "rule_result_target"
+      },
+      "rule": {
+        "many": false,
+        "required": true,
+        "target": "_rule",
+        "title": "Rule"
+      }
+    },
+    "schema": {
+      "properties": {
+        "entity": {
+          "description": "The entity tested",
+          "icon": "General",
+          "title": "Entity",
+          "type": "string"
+        },
+        "result": {
+          "description": "Whether this entity passed the related rule's query",
+          "enum": [
+            "Not passed",
+            "Passed"
+          ],
+          "enumColors": {
+            "Not passed": "red",
+            "Passed": "green"
+          },
+          "icon": "Sort",
+          "title": "Result",
+          "type": "string"
+        },
+        "result_last_change": {
+          "description": "Last time the rule result changed",
+          "format": "date-time",
+          "icon": "AuditLog",
+          "title": "Result last change",
+          "type": "string"
+        }
+      },
+      "required": [
+        "result",
+        "entity"
+      ]
+    },
+    "title": "Scorecard Rule Result",
+    "updatedAt": "2026-06-08T18:44:31.996Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {
+      "entities_passed": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "icon": "Rocket",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "result",
+              "value": "Passed"
+            }
+          ]
+        },
+        "target": "_rule_result",
+        "title": "Entities passed",
+        "type": "number"
+      },
+      "entities_tested": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "icon": "Properties",
+        "target": "_rule_result",
+        "title": "Entities tested",
+        "type": "number"
+      }
+    },
+    "calculationProperties": {
+      "of_entities_passed": {
+        "calculation": "(.properties.entities_passed/.properties.entities_tested)*100",
+        "colorized": false,
+        "icon": "LineChart",
+        "title": "% of entities passed",
+        "type": "number"
+      }
+    },
+    "createdAt": "2026-06-05T18:36:38.495Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "description": "This blueprint represents a specific scorecard rule",
+    "icon": "Star",
+    "identifier": "_rule",
+    "mirrorProperties": {},
+    "relations": {
+      "scorecard": {
+        "many": false,
+        "required": true,
+        "target": "_scorecard",
+        "title": "Scorecard"
+      }
+    },
+    "schema": {
+      "properties": {
+        "level": {
+          "description": "The level that this rule is required to pass",
+          "enum": [
+            "Basic",
+            "Bronze",
+            "Silver",
+            "Gold"
+          ],
+          "enumColors": {
+            "Basic": "lightGray",
+            "Bronze": "bronze",
+            "Gold": "gold",
+            "Silver": "silver"
+          },
+          "icon": "Columns",
+          "title": "Level",
+          "type": "string"
+        },
+        "query": {
+          "default": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "operator": "isNotEmpty",
+                "property": "$team"
+              }
+            ]
+          },
+          "description": "Query definition of the rule. Entities matched will be marked as \"passed\"",
+          "icon": "Search",
+          "properties": {
+            "combinator": {
+              "enum": [
+                "and",
+                "or"
+              ],
+              "type": "string"
+            },
+            "conditions": {
+              "minItems": 1,
+              "type": "array"
+            }
+          },
+          "required": [
+            "combinator",
+            "conditions"
+          ],
+          "title": "Query",
+          "type": "object"
+        },
+        "rule_description": {
+          "description": "Short description of the rule's logic",
+          "icon": "DefaultBlueprint",
+          "title": "Rule description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "level",
+        "query"
+      ]
+    },
+    "title": "Scorecard Rule",
+    "updatedAt": "2026-06-08T18:44:32.274Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {
+      "deployment_frequency": {
+        "calculationSpec": {
+          "averageOf": "week",
+          "calculationBy": "entities",
+          "func": "average",
+          "measureTimeBy": "createdAt"
+        },
+        "description": "Successful PR Merges per Week",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "deployment",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "deploymentStatus",
+              "value": "Success"
+            },
+            {
+              "operator": "=",
+              "property": "environment",
+              "value": "Production"
+            }
+          ]
+        },
+        "target": "deployment",
+        "title": "Deployment Frequency (per week)",
+        "type": "number"
+      },
+      "github_failed_workflow_runs_30d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Workflow runs that ended in failure in the last 30 days",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubWorkflowRun",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            },
+            {
+              "operator": "=",
+              "property": "conclusion",
+              "value": "failure"
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Monthly Failed Workflow Runs",
+        "type": "number"
+      },
+      "github_failed_workflow_runs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Workflow runs that ended in failure in the last 7 days",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubWorkflowRun",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            },
+            {
+              "operator": "=",
+              "property": "conclusion",
+              "value": "failure"
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Weekly Failed Workflow Runs",
+        "type": "number"
+      },
+      "github_lead_time_for_change": {
+        "calculationSpec": {
+          "averageOf": "total",
+          "calculationBy": "property",
+          "func": "average",
+          "measureTimeBy": "$createdAt",
+          "property": "cycle_time_hours"
+        },
+        "description": "Average time from PR creation to merge in the last 30 days",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubPullRequest",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Lead Time for Changes (Hours)",
+        "type": "number"
+      },
+      "github_merged_prs_last_month": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Pull requests merged in the last 30 days",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubPullRequest",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Monthly PR Throughput",
+        "type": "number"
+      },
+      "github_merged_prs_last_week": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Pull requests merged in the last 7 days",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubPullRequest",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Weekly PR Throughput",
+        "type": "number"
+      },
+      "github_open_prs": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Open pull requests",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubPullRequest",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "status",
+              "value": "open"
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Open PRs",
+        "type": "number"
+      },
+      "github_pr_cycle_time": {
+        "calculationSpec": {
+          "averageOf": "total",
+          "calculationBy": "property",
+          "func": "average",
+          "measureTimeBy": "$createdAt",
+          "property": "cycle_time_hours"
+        },
+        "description": "Average time from PR creation to merge (last month)",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubPullRequest",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Monthly PR Cycle Time",
+        "type": "number"
+      },
+      "github_pr_cycle_time_weekly": {
+        "calculationSpec": {
+          "averageOf": "total",
+          "calculationBy": "property",
+          "func": "average",
+          "measureTimeBy": "$createdAt",
+          "property": "cycle_time_hours"
+        },
+        "description": "Average time from PR creation to merge (last week)",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubPullRequest",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Weekly PR Cycle Time",
+        "type": "number"
+      },
+      "github_stale_prs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Open PRs older than 7 days",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubPullRequest",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "status",
+              "value": "open"
+            },
+            {
+              "operator": "notBetween",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Stale PRs (7d+)",
+        "type": "number"
+      },
+      "github_workflow_runs_30d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total workflow runs in the last 30 days",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubWorkflowRun",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Monthly Workflow Runs",
+        "type": "number"
+      },
+      "github_workflow_runs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total workflow runs in the last 7 days",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "githubWorkflowRun",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Weekly Workflow Runs",
+        "type": "number"
+      },
+      "total_deployments": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total successful deployments to Production",
+        "icon": "DefaultProperty",
+        "pathFilter": [
+          {
+            "fromBlueprint": "deployment",
+            "path": [
+              "service"
+            ]
+          }
+        ],
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "deploymentStatus",
+              "value": "Success"
+            },
+            {
+              "operator": "=",
+              "property": "environment",
+              "value": "Production"
+            }
+          ]
+        },
+        "target": "deployment",
+        "title": "Total Deployments",
+        "type": "number"
+      }
+    },
+    "calculationProperties": {
+      "deploy_freq_tier": {
+        "calculation": "if (.properties.total_deployments == null or .properties.total_deployments == 0) then \"Low\" else if (.properties.deployment_frequency // 0) \u003e= 7 then \"Elite\" elif (.properties.deployment_frequency // 0) \u003e= 1 then \"High\" elif (.properties.deployment_frequency // 0) \u003e= 0.25 then \"Medium\" else \"Low\" end end",
+        "colorized": true,
+        "colors": {
+          "Elite": "lime",
+          "High": "blue",
+          "Low": "red",
+          "Medium": "orange"
+        },
+        "description": "DORA deployment frequency tier (from production deployments)",
+        "icon": "DefaultProperty",
+        "title": "Deployment Frequency",
+        "type": "string"
+      },
+      "github_cycle_time_trend": {
+        "calculation": "((.properties.github_pr_cycle_time // 0) - (.properties.github_pr_cycle_time_weekly // 0)) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly vs monthly PR cycle time",
+        "icon": "DefaultProperty",
+        "title": "PR Cycle Time Trend",
+        "type": "string"
+      },
+      "github_days_since_last_push": {
+        "calculation": "if .properties.github_last_push != null then ((now - (.properties.github_last_push[0:19] + \"Z\" | fromdateiso8601)) / 86400 | floor) else 9999 end",
+        "description": "Number of days since the last code push",
+        "icon": "Clock",
+        "title": "Days Since Last Push",
+        "type": "number"
+      },
+      "github_failure_rate_trend": {
+        "calculation": "((if (.properties.github_workflow_runs_30d != null and .properties.github_workflow_runs_30d != 0) then ((.properties.github_failed_workflow_runs_30d // 0) / .properties.github_workflow_runs_30d) * 100 | floor else 0 end) - (if (.properties.github_workflow_runs_7d != null and .properties.github_workflow_runs_7d != 0) then ((.properties.github_failed_workflow_runs_7d // 0) / .properties.github_workflow_runs_7d) * 100 | floor else 0 end)) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly failure rate vs monthly average",
+        "icon": "DefaultProperty",
+        "title": "Workflow Failure Rate Trend",
+        "type": "string"
+      },
+      "github_lead_time_tier": {
+        "calculation": "if (.properties.github_lead_time_for_change == null) then \"Low\" elif .properties.github_lead_time_for_change \u003c= 24 then \"Elite\" elif .properties.github_lead_time_for_change \u003c= 168 then \"High\" elif .properties.github_lead_time_for_change \u003c= 720 then \"Medium\" else \"Low\" end",
+        "colorized": true,
+        "colors": {
+          "Elite": "lime",
+          "High": "blue",
+          "Low": "red",
+          "Medium": "orange"
+        },
+        "description": "DORA lead time for changes tier (from GitHub PR cycle time)",
+        "icon": "DefaultProperty",
+        "title": "Lead Time for Changes (GitHub)",
+        "type": "string"
+      },
+      "github_monthly_workflow_failure_rate": {
+        "calculation": "if (.properties.github_workflow_runs_30d != null and .properties.github_workflow_runs_30d != 0) then ((.properties.github_failed_workflow_runs_30d // 0) / .properties.github_workflow_runs_30d) * 100 | floor else 0 end",
+        "description": "Percentage of workflow runs that failed in the last 30 days",
+        "icon": "DefaultProperty",
+        "title": "Monthly Workflow Failure Rate (%)",
+        "type": "number"
+      },
+      "github_stale_pr_share_percent": {
+        "calculation": "if (.properties.github_open_prs != null and .properties.github_open_prs != 0) then (.properties.github_stale_prs_7d / .properties.github_open_prs) * 100 else 0 end",
+        "description": "Percentage of open PRs that are older than 7 days",
+        "icon": "DefaultProperty",
+        "title": "Stale PR Share (%)",
+        "type": "number"
+      },
+      "github_throughput_trend": {
+        "calculation": "((.properties.github_merged_prs_last_week // 0) * 30 - (.properties.github_merged_prs_last_month // 0) * 7) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly vs monthly PR throughput rate",
+        "icon": "DefaultProperty",
+        "title": "PR Throughput Trend",
+        "type": "string"
+      },
+      "github_weekly_workflow_failure_rate": {
+        "calculation": "if (.properties.github_workflow_runs_7d != null and .properties.github_workflow_runs_7d != 0) then ((.properties.github_failed_workflow_runs_7d // 0) / .properties.github_workflow_runs_7d) * 100 | floor else 0 end",
+        "description": "Percentage of workflow runs that failed in the last 7 days",
+        "icon": "DefaultProperty",
+        "title": "Weekly Workflow Failure Rate (%)",
+        "type": "number"
+      }
+    },
+    "createdAt": "2026-06-05T18:36:45.174Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "icon": "Microservice",
+    "identifier": "service",
+    "mirrorProperties": {
+      "github_codeowners": {
+        "path": "github_repository.codeowners",
+        "title": "Code Owners"
+      },
+      "github_default_branch": {
+        "path": "github_repository.defaultBranch",
+        "title": "Default Branch"
+      },
+      "github_description": {
+        "path": "github_repository.description",
+        "title": "Description"
+      },
+      "github_gitignore": {
+        "path": "github_repository.gitignore",
+        "title": "Git Ignore"
+      },
+      "github_language": {
+        "path": "github_repository.language",
+        "title": "Programming Language"
+      },
+      "github_last_push": {
+        "path": "github_repository.last_push",
+        "title": "Last Repository Push"
+      },
+      "github_pr_template": {
+        "path": "github_repository.pr_template",
+        "title": "PR Template"
+      },
+      "github_readme": {
+        "path": "github_repository.readme",
+        "title": "README"
+      },
+      "github_repository_id": {
+        "path": "github_repository.$identifier",
+        "title": "Repo ID"
+      },
+      "github_url": {
+        "path": "github_repository.url",
+        "title": "Repository URL"
+      },
+      "github_visibility": {
+        "path": "github_repository.visibility",
+        "title": "Visibility"
+      }
+    },
+    "ownership": {
+      "type": "Direct"
+    },
+    "relations": {
+      "dependencies": {
+        "description": "Services this service depends on",
+        "many": true,
+        "required": false,
+        "target": "service",
+        "title": "Dependencies"
+      },
+      "github_repository": {
+        "many": false,
+        "required": false,
+        "target": "githubRepository",
+        "title": "GitHub Repository"
+      }
+    },
+    "schema": {
+      "properties": {
+        "criticality": {
+          "description": "Service criticality level",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ],
+          "enumColors": {
+            "critical": "red",
+            "high": "orange",
+            "low": "turquoise",
+            "medium": "yellow"
+          },
+          "icon": "Alert",
+          "title": "Criticality",
+          "type": "string"
+        },
+        "on_call_slack": {
+          "description": "Slack handle for the service on-call owner",
+          "title": "On-call Slack",
+          "type": "string"
+        },
+        "remediation_ref": {
+          "description": "Fallback Git ref for Cursor remediation PRs",
+          "title": "Remediation Ref",
+          "type": "string"
+        },
+        "remediation_repository_url": {
+          "description": "Fallback GitHub repository URL for Cursor remediation PRs when no GitHub repository relation is set",
+          "format": "url",
+          "title": "Remediation Repository URL",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "Service",
+    "updatedAt": "2026-06-08T15:29:49.380Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-08T13:57:42.814Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "This blueprint represents a GitHub organization with engineering metrics",
+    "icon": "Github",
+    "identifier": "githubOrganization",
+    "mirrorProperties": {},
+    "relations": {
+      "organization": {
+        "many": false,
+        "required": false,
+        "target": "organization",
+        "title": "Organization"
+      }
+    },
+    "schema": {
+      "properties": {
+        "avatarUrl": {
+          "description": "Organization avatar image URL",
+          "title": "Avatar URL",
+          "type": "string"
+        },
+        "createdAt": {
+          "description": "When the organization was created",
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "description": {
+          "description": "Organization description",
+          "title": "Description",
+          "type": "string"
+        },
+        "id": {
+          "description": "GitHub organization ID",
+          "title": "Organization ID",
+          "type": "number"
+        },
+        "login": {
+          "description": "The GitHub organization login name",
+          "title": "Organization Login",
+          "type": "string"
+        },
+        "nodeId": {
+          "description": "GitHub GraphQL node ID",
+          "title": "Node ID",
+          "type": "string"
+        },
+        "publicRepos": {
+          "description": "Number of public repositories",
+          "title": "Public Repositories",
+          "type": "number"
+        },
+        "updatedAt": {
+          "description": "When the organization was last updated",
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "url": {
+          "description": "GitHub organization page URL",
+          "title": "URL",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "GitHub Organization",
+    "updatedAt": "2026-06-08T14:00:33.317Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-05T18:36:42.677Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "description": "For each agent request a match feedback entity will be created",
+    "icon": "Star",
+    "identifier": "_ai_invocations",
+    "mirrorProperties": {
+      "agent_title": {
+        "path": "agent.$title",
+        "title": "agent title"
+      }
+    },
+    "ownership": {
+      "path": "agent",
+      "title": "Owning Teams",
+      "type": "Inherited"
+    },
+    "relations": {
+      "agent": {
+        "description": "The agent that was invoked",
+        "many": false,
+        "required": false,
+        "target": "_ai_agent",
+        "title": "Agent"
+      },
+      "asked_by": {
+        "description": "Who invoked the agent",
+        "many": false,
+        "required": false,
+        "target": "_user",
+        "title": "Asked By"
+      },
+      "conversation": {
+        "description": "The conversation this invocation belongs to",
+        "many": false,
+        "required": true,
+        "target": "_ai_conversation",
+        "title": "Conversation"
+      },
+      "parent": {
+        "description": "The previous invocation in the conversation chain",
+        "many": false,
+        "required": false,
+        "target": "_ai_invocations",
+        "title": "Previous Invocation"
+      }
+    },
+    "schema": {
+      "properties": {
+        "asked_at": {
+          "description": "When the agent was invoked",
+          "format": "date-time",
+          "icon": "Calendar",
+          "title": "Asked At",
+          "type": "string"
+        },
+        "context_usage_percent": {
+          "description": "Percentage of LLM context window used (0-100)",
+          "icon": "DefaultProperty",
+          "title": "Context Usage",
+          "type": "number"
+        },
+        "error": {
+          "description": "Detailed description of an error in case of failed execution",
+          "title": "Error",
+          "type": "string"
+        },
+        "execution_logs": {
+          "description": "The reasoning and tools execution logs",
+          "format": "markdown",
+          "title": "Execution Logs",
+          "type": "string"
+        },
+        "feedback_comment": {
+          "description": "Optional free-text comment on the AI invocation",
+          "icon": "DefaultProperty",
+          "title": "Feedback comment",
+          "type": "string"
+        },
+        "feedback_rating": {
+          "description": "User thumbs up/down on the AI invocation",
+          "enum": [
+            "positive",
+            "negative"
+          ],
+          "enumColors": {
+            "negative": "red",
+            "positive": "green"
+          },
+          "icon": "DefaultProperty",
+          "title": "Feedback rating",
+          "type": "string"
+        },
+        "labels": {
+          "description": "Free labels to identify specific attributes on the invocation",
+          "title": "Labels",
+          "type": "object"
+        },
+        "model": {
+          "description": "The LLM model used for the invocation",
+          "title": "Model",
+          "type": "string"
+        },
+        "prompt": {
+          "description": "The prompt sent to the agent, including both the user and the agent prompt",
+          "format": "markdown",
+          "title": "Prompt",
+          "type": "string"
+        },
+        "provider": {
+          "description": "The LLM provider used for the invocation",
+          "title": "Provider",
+          "type": "string"
+        },
+        "quota": {
+          "description": "The quota usage",
+          "title": "Quota",
+          "type": "object"
+        },
+        "replied_at": {
+          "description": "When the agent replied",
+          "format": "date-time",
+          "icon": "Calendar",
+          "title": "Replied At",
+          "type": "string"
+        },
+        "response": {
+          "description": "The final agent response",
+          "format": "markdown",
+          "title": "Response",
+          "type": "string"
+        },
+        "source": {
+          "description": "The source of the AI invocation",
+          "icon": "DefaultProperty",
+          "title": "Source",
+          "type": "string"
+        },
+        "status": {
+          "description": "The agent invocation status",
+          "enum": [
+            "In Progress",
+            "Completed",
+            "Failed"
+          ],
+          "enumColors": {
+            "Completed": "green",
+            "Failed": "red",
+            "In Progress": "blue"
+          },
+          "icon": "DefaultProperty",
+          "title": "Status",
+          "type": "string"
+        },
+        "summary": {
+          "description": "Condensed summary of the previous invocation messages, used as context when the context window is full",
+          "format": "markdown",
+          "icon": "DefaultProperty",
+          "title": "Summary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "asked_at",
+        "status"
+      ]
+    },
+    "title": "AI Invocation",
+    "updatedAt": "2026-06-05T18:36:43.652Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-05T18:36:44.827Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "icon": "Environment",
+    "identifier": "environment",
+    "mirrorProperties": {},
+    "relations": {},
+    "schema": {
+      "properties": {},
+      "required": []
+    },
+    "title": "Environment",
+    "updatedAt": "2026-06-05T18:36:52.353Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-05T18:36:45.626Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "A production deployment created from a merged PR to the default branch",
+    "icon": "Deployment",
+    "identifier": "deployment",
+    "mirrorProperties": {
+      "github_lead_time_hours": {
+        "path": "github_pull_request.cycle_time_hours",
+        "title": "Lead Time for Changes (Hours)"
+      },
+      "github_repo_id": {
+        "path": "github_pull_request.repository.$identifier",
+        "title": "GitHub Repository ID"
+      }
+    },
+    "relations": {
+      "github_pull_request": {
+        "many": false,
+        "required": false,
+        "target": "githubPullRequest",
+        "title": "Pull Request"
+      },
+      "service": {
+        "many": false,
+        "required": false,
+        "target": "service",
+        "title": "Service"
+      }
+    },
+    "schema": {
+      "properties": {
+        "createdAt": {
+          "format": "date-time",
+          "title": "Deployment Time",
+          "type": "string"
+        },
+        "deploymentStatus": {
+          "enum": [
+            "Success",
+            "Failure",
+            "Pending"
+          ],
+          "enumColors": {
+            "Failure": "red",
+            "Pending": "yellow",
+            "Success": "green"
+          },
+          "title": "Deployment Status",
+          "type": "string"
+        },
+        "environment": {
+          "enum": [
+            "Production",
+            "Staging",
+            "Development"
+          ],
+          "enumColors": {
+            "Development": "blue",
+            "Production": "green",
+            "Staging": "yellow"
+          },
+          "title": "Environment",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "Deployment",
+    "updatedAt": "2026-06-08T14:00:46.318Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {
+      "deployment_frequency": {
+        "calculationSpec": {
+          "averageOf": "week",
+          "calculationBy": "entities",
+          "func": "average",
+          "measureTimeBy": "createdAt"
+        },
+        "description": "Average successful Production deployments per week by this team",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "deploymentStatus",
+              "value": "Success"
+            },
+            {
+              "operator": "=",
+              "property": "environment",
+              "value": "Production"
+            }
+          ]
+        },
+        "target": "deployment",
+        "title": "Deployment Frequency (per week)",
+        "type": "number"
+      },
+      "github_failed_workflow_runs_30d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Workflow runs that ended in failure in the last 30 days",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            },
+            {
+              "operator": "=",
+              "property": "conclusion",
+              "value": "failure"
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Monthly Failed Workflow Runs",
+        "type": "number"
+      },
+      "github_failed_workflow_runs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Workflow runs that ended in failure in the last 7 days",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            },
+            {
+              "operator": "=",
+              "property": "conclusion",
+              "value": "failure"
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Weekly Failed Workflow Runs",
+        "type": "number"
+      },
+      "github_lead_time_for_change": {
+        "calculationSpec": {
+          "averageOf": "total",
+          "calculationBy": "property",
+          "func": "average",
+          "measureTimeBy": "$createdAt",
+          "property": "cycle_time_hours"
+        },
+        "description": "Average hours from PR creation to merge in the last 30 days",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Lead Time for Changes (Hours)",
+        "type": "number"
+      },
+      "github_merged_prs_last_month": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Pull requests merged in the last 30 days",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Monthly PR Throughput",
+        "type": "number"
+      },
+      "github_merged_prs_last_week": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Pull requests merged in the last 7 days",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Weekly PR Throughput",
+        "type": "number"
+      },
+      "github_open_prs": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Currently open pull requests",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "status",
+              "value": "open"
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Open PRs",
+        "type": "number"
+      },
+      "github_pr_cycle_time": {
+        "calculationSpec": {
+          "averageOf": "total",
+          "calculationBy": "property",
+          "func": "average",
+          "measureTimeBy": "$createdAt",
+          "property": "cycle_time_hours"
+        },
+        "description": "Average hours from PR creation to merge (last 30 days)",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Monthly PR Cycle Time",
+        "type": "number"
+      },
+      "github_pr_cycle_time_weekly": {
+        "calculationSpec": {
+          "averageOf": "total",
+          "calculationBy": "property",
+          "func": "average",
+          "measureTimeBy": "$createdAt",
+          "property": "cycle_time_hours"
+        },
+        "description": "Average hours from PR creation to merge (last 7 days)",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Weekly PR Cycle Time",
+        "type": "number"
+      },
+      "github_stale_prs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Open pull requests older than 7 days",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "status",
+              "value": "open"
+            },
+            {
+              "operator": "notBetween",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Stale PRs (7d+)",
+        "type": "number"
+      },
+      "github_workflow_runs_30d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total workflow runs in the last 30 days",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Monthly Workflow Runs",
+        "type": "number"
+      },
+      "github_workflow_runs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total workflow runs in the last 7 days",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Weekly Workflow Runs",
+        "type": "number"
+      },
+      "services_count": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total number of services owned by this team",
+        "target": "service",
+        "title": "Number of Services",
+        "type": "number"
+      },
+      "size": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "pathFilter": [
+          {
+            "fromBlueprint": "_user",
+            "path": [
+              "$team"
+            ]
+          }
+        ],
+        "target": "_user",
+        "title": "Size",
+        "type": "number"
+      },
+      "total_deployments": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total successful Production deployments by this team",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "deploymentStatus",
+              "value": "Success"
+            },
+            {
+              "operator": "=",
+              "property": "environment",
+              "value": "Production"
+            }
+          ]
+        },
+        "target": "deployment",
+        "title": "Total Deployments",
+        "type": "number"
+      }
+    },
+    "calculationProperties": {
+      "deploy_freq_tier": {
+        "calculation": "if (.properties.total_deployments == null or .properties.total_deployments == 0) then \"Low\" else (if (.properties.services_count != null and .properties.services_count != 0) then ((.properties.deployment_frequency // 0) / .properties.services_count) else 0 end) as $dpf | if $dpf \u003e= 7 then \"Elite\" elif $dpf \u003e= 1 then \"High\" elif $dpf \u003e= 0.25 then \"Medium\" else \"Low\" end end",
+        "colorized": true,
+        "colors": {
+          "Elite": "lime",
+          "High": "blue",
+          "Low": "red",
+          "Medium": "orange"
+        },
+        "description": "DORA deployment frequency tier (per service)",
+        "title": "Deployment Frequency",
+        "type": "string"
+      },
+      "deployment_frequency_per_service": {
+        "calculation": "if (.properties.total_deployments == null or .properties.total_deployments == 0) then null elif (.properties.services_count != null and .properties.services_count != 0) then (.properties.deployment_frequency // 0) / .properties.services_count else null end",
+        "description": "Average successful deployments per service per week",
+        "title": "Deployment Frequency per Service (per week)",
+        "type": "number"
+      },
+      "failure_rate_trend": {
+        "calculation": "((if (.properties.github_workflow_runs_30d != null and .properties.github_workflow_runs_30d != 0) then ((.properties.github_failed_workflow_runs_30d // 0) / .properties.github_workflow_runs_30d) * 100 | floor else 0 end) - (if (.properties.github_workflow_runs_7d != null and .properties.github_workflow_runs_7d != 0) then ((.properties.github_failed_workflow_runs_7d // 0) / .properties.github_workflow_runs_7d) * 100 | floor else 0 end)) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly failure rate vs monthly average — Improving, Stable, or Degrading",
+        "title": "Workflow Failure Rate Trend",
+        "type": "string"
+      },
+      "github_cycle_time_trend": {
+        "calculation": "((.properties.github_pr_cycle_time // 0) - (.properties.github_pr_cycle_time_weekly // 0)) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly vs monthly PR cycle time — Improving, Stable, or Degrading",
+        "title": "PR Cycle Time Trend",
+        "type": "string"
+      },
+      "github_lead_time_tier": {
+        "calculation": "if (.properties.github_lead_time_for_change == null) then \"Low\" elif .properties.github_lead_time_for_change \u003c= 24 then \"Elite\" elif .properties.github_lead_time_for_change \u003c= 168 then \"High\" elif .properties.github_lead_time_for_change \u003c= 720 then \"Medium\" else \"Low\" end",
+        "colorized": true,
+        "colors": {
+          "Elite": "lime",
+          "High": "blue",
+          "Low": "red",
+          "Medium": "orange"
+        },
+        "description": "DORA lead time for changes tier",
+        "title": "Lead Time for Changes",
+        "type": "string"
+      },
+      "github_merged_prs_per_service_last_month": {
+        "calculation": "if (.properties.services_count != null and .properties.services_count != 0) then (.properties.github_merged_prs_last_month / .properties.services_count) else 0 end",
+        "description": "PRs merged in the last 30 days divided by number of services",
+        "title": "Monthly PR Throughput per Service",
+        "type": "number"
+      },
+      "github_open_prs_per_service": {
+        "calculation": "if (.properties.services_count != null and .properties.services_count != 0) then (.properties.github_open_prs / .properties.services_count) else 0 end",
+        "description": "Open PR count divided by number of services owned by the team",
+        "title": "Open PRs per Service",
+        "type": "number"
+      },
+      "github_stale_pr_share_percent": {
+        "calculation": "if (.properties.github_open_prs != null and .properties.github_open_prs != 0) then (.properties.github_stale_prs_7d / .properties.github_open_prs) * 100 else 0 end",
+        "description": "Percentage of open PRs that are older than 7 days",
+        "title": "Stale PR Share (%)",
+        "type": "number"
+      },
+      "github_stale_prs_per_service_7d": {
+        "calculation": "if (.properties.services_count != null and .properties.services_count != 0) then (.properties.github_stale_prs_7d / .properties.services_count) else 0 end",
+        "description": "Open PRs older than 7 days divided by number of services",
+        "title": "Stale PRs per Service",
+        "type": "number"
+      },
+      "github_throughput_trend": {
+        "calculation": "((.properties.github_merged_prs_last_week // 0) * 30 - (.properties.github_merged_prs_last_month // 0) * 7) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly vs monthly PR throughput rate — Improving, Stable, or Degrading",
+        "title": "PR Throughput Trend",
+        "type": "string"
+      },
+      "monthly_workflow_failure_rate": {
+        "calculation": "if (.properties.github_workflow_runs_30d != null and .properties.github_workflow_runs_30d != 0) then ((.properties.github_failed_workflow_runs_30d // 0) / .properties.github_workflow_runs_30d) * 100 | floor else 0 end",
+        "description": "Percentage of workflow runs that failed in the last 30 days",
+        "title": "Monthly Workflow Failure Rate (%)",
+        "type": "number"
+      },
+      "weekly_workflow_failure_rate": {
+        "calculation": "if (.properties.github_workflow_runs_7d != null and .properties.github_workflow_runs_7d != 0) then ((.properties.github_failed_workflow_runs_7d // 0) / .properties.github_workflow_runs_7d) * 100 | floor else 0 end",
+        "description": "Percentage of workflow runs that failed in the last 7 days",
+        "title": "Weekly Workflow Failure Rate (%)",
+        "type": "number"
+      }
+    },
+    "createdAt": "2026-06-05T18:36:34.674Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "description": "This blueprint is synced with Port teams",
+    "icon": "Team",
+    "identifier": "_team",
+    "mirrorProperties": {
+      "parent_team_name": {
+        "path": "parent_team.$title",
+        "title": "Parent Team"
+      }
+    },
+    "relations": {
+      "organization": {
+        "many": false,
+        "required": false,
+        "target": "organization",
+        "title": "Organization"
+      },
+      "parent_team": {
+        "many": false,
+        "required": false,
+        "target": "_team",
+        "title": "Parent Team"
+      }
+    },
+    "schema": {
+      "properties": {
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "type": {
+          "default": "team",
+          "description": "Hierarchy level — team (leaf) or group (intermediate)",
+          "enum": [
+            "team",
+            "group"
+          ],
+          "enumColors": {
+            "group": "turquoise",
+            "team": "blue"
+          },
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "Team",
+    "updatedAt": "2026-06-08T14:00:45.574Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-05T18:36:37.037Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "description": "This blueprint is synced with active or invited Port users",
+    "icon": "User",
+    "identifier": "_user",
+    "mirrorProperties": {
+      "git_hub_username": {
+        "path": "git_hub_user.$identifier",
+        "title": "GitHub username"
+      },
+      "jira_user_id": {
+        "path": "jira_user.$identifier",
+        "title": "Jira User ID"
+      }
+    },
+    "ownership": {
+      "title": "Teams",
+      "type": "Direct"
+    },
+    "relations": {
+      "git_hub_user": {
+        "many": false,
+        "required": false,
+        "target": "githubUser",
+        "title": "GitHub User"
+      },
+      "jira_user": {
+        "many": false,
+        "required": false,
+        "target": "jiraUser",
+        "title": "Jira User"
+      }
+    },
+    "schema": {
+      "properties": {
+        "moderated_blueprints": {
+          "items": {
+            "format": "blueprints",
+            "type": "string"
+          },
+          "title": "Moderated Blueprints",
+          "type": "array"
+        },
+        "port_role": {
+          "default": "Member",
+          "enum": [
+            "Admin",
+            "Moderator",
+            "Member"
+          ],
+          "enumColors": {
+            "Admin": "turquoise",
+            "Member": "lightGray",
+            "Moderator": "purple"
+          },
+          "icon": "DefaultProperty",
+          "title": "Port Role",
+          "type": "string"
+        },
+        "port_type": {
+          "default": "Standard",
+          "enum": [
+            "Standard",
+            "Service Account"
+          ],
+          "enumColors": {
+            "Service Account": "pink",
+            "Standard": "blue"
+          },
+          "icon": "DefaultProperty",
+          "title": "Port Type",
+          "type": "string"
+        },
+        "status": {
+          "default": "Staged",
+          "enum": [
+            "Invited",
+            "Active",
+            "Disabled",
+            "Staged"
+          ],
+          "enumColors": {
+            "Active": "green",
+            "Disabled": "red",
+            "Invited": "lightGray",
+            "Staged": "yellow"
+          },
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "port_role",
+        "status",
+        "port_type"
+      ]
+    },
+    "title": "User",
+    "updatedAt": "2026-06-17T16:18:17.894Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {
+      "days_old": {
+        "calculation": "(now / 86400) - (.properties.createdAt | capture(\"(?\u003cdate\u003e\\\\d{4}-\\\\d{2}-\\\\d{2})\") | .date | strptime(\"%Y-%m-%d\") | mktime / 86400) | floor",
+        "icon": "DefaultProperty",
+        "title": "Days Old",
+        "type": "number"
+      },
+      "is_stale": {
+        "calculation": "if (.properties.status == \"open\" and (((now / 86400) - (.properties.createdAt | capture(\"(?\u003cdate\u003e\\\\d{4}-\\\\d{2}-\\\\d{2})\") | .date | strptime(\"%Y-%m-%d\") | mktime / 86400) | floor) \u003e 7)) then true else false end",
+        "colorized": true,
+        "colors": {
+          "true": "orange"
+        },
+        "description": "True when this PR is open and older than 7 days",
+        "icon": "Clock",
+        "title": "Is Stale (7d+)",
+        "type": "boolean"
+      },
+      "pr_age_label": {
+        "calculation": "((if .properties.mergedAt == null then (now / 86400) else (.properties.mergedAt | capture(\"(?\u003cdate\u003e\\\\d{4}-\\\\d{2}-\\\\d{2})\") | .date | strptime(\"%Y-%m-%d\") | mktime / 86400) end) as $toDate | $toDate - (.properties.createdAt | capture(\"(?\u003cdate\u003e\\\\d{4}-\\\\d{2}-\\\\d{2})\") | .date | strptime(\"%Y-%m-%d\") | mktime / 86400) | floor) as $daysOld | if $daysOld \u003c= 3 then \"0-3 days\" elif $daysOld \u003c= 7 then \"3-7 days\" elif $daysOld \u003c= 30 then \"7-30 days\" else \"\u003e30 days\" end",
+        "colorized": true,
+        "colors": {
+          "0-3 days": "green",
+          "3-7 days": "yellow",
+          "7-30 days": "orange",
+          "\u003e30 days": "red"
+        },
+        "description": "Classifies a PR into 0-3 days | 3-7 days | 7-30 days | \u003e30 days",
+        "icon": "Clock",
+        "title": "PR Age",
+        "type": "string"
+      }
+    },
+    "createdAt": "2026-06-08T13:57:44.932Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "icon": "Github",
+    "identifier": "githubPullRequest",
+    "mirrorProperties": {
+      "reviewer_teams": {
+        "path": "reviewers.$team",
+        "title": "Reviewer Teams"
+      }
+    },
+    "ownership": {
+      "path": "service",
+      "title": "Owning Teams",
+      "type": "Inherited"
+    },
+    "relations": {
+      "assignees": {
+        "many": true,
+        "required": false,
+        "target": "_user",
+        "title": "Assignees"
+      },
+      "creator": {
+        "many": false,
+        "required": false,
+        "target": "_user",
+        "title": "Creator"
+      },
+      "git_hub_assignees": {
+        "many": true,
+        "required": false,
+        "target": "githubUser",
+        "title": "Assignees"
+      },
+      "git_hub_creator": {
+        "many": false,
+        "required": false,
+        "target": "githubUser",
+        "title": "Creator"
+      },
+      "git_hub_reviewers": {
+        "many": true,
+        "required": false,
+        "target": "githubUser",
+        "title": "Reviewers"
+      },
+      "repository": {
+        "many": false,
+        "required": false,
+        "target": "githubRepository",
+        "title": "Repository"
+      },
+      "reviewers": {
+        "many": true,
+        "required": false,
+        "target": "_user",
+        "title": "Reviewers"
+      },
+      "service": {
+        "many": false,
+        "required": false,
+        "target": "service",
+        "title": "Service"
+      }
+    },
+    "schema": {
+      "properties": {
+        "branch": {
+          "title": "Branch",
+          "type": "string"
+        },
+        "closedAt": {
+          "format": "date-time",
+          "title": "Closed At",
+          "type": "string"
+        },
+        "createdAt": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "cycle_time_hours": {
+          "description": "Time from PR creation to merge in hours.",
+          "title": "PR Cycle Time (Hours)",
+          "type": "number"
+        },
+        "has_assignees": {
+          "title": "Has assignees",
+          "type": "boolean"
+        },
+        "has_reviewers": {
+          "title": "Has reviewers",
+          "type": "boolean"
+        },
+        "lead_time_hours": {
+          "description": "DORA Lead Time for Changes — time from first commit to merge in hours. Falls back to PR creation if commit data unavailable.",
+          "title": "Lead Time for Changes (Hours)",
+          "type": "number"
+        },
+        "link": {
+          "format": "url",
+          "title": "Link",
+          "type": "string"
+        },
+        "mergedAt": {
+          "format": "date-time",
+          "title": "Merged At",
+          "type": "string"
+        },
+        "prNumber": {
+          "title": "PR Number",
+          "type": "number"
+        },
+        "reviewDecision": {
+          "description": "The review decision state of the pull request",
+          "enum": [
+            "APPROVED",
+            "CHANGES_REQUESTED",
+            "REVIEW_REQUIRED"
+          ],
+          "enumColors": {
+            "APPROVED": "green",
+            "CHANGES_REQUESTED": "orange",
+            "REVIEW_REQUIRED": "yellow"
+          },
+          "title": "Review Decision",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "closed",
+            "merged"
+          ],
+          "enumColors": {
+            "closed": "red",
+            "merged": "green",
+            "open": "blue"
+          },
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "GitHub Pull Request",
+    "updatedAt": "2026-06-08T14:00:52.817Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-05T18:36:41.205Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "description": "External MCP (Model Context Protocol) servers that can be connected to Port",
+    "icon": "Mcp",
+    "identifier": "_mcp_server",
+    "mirrorProperties": {},
+    "ownership": {
+      "title": "Owning Teams",
+      "type": "Direct"
+    },
+    "relations": {},
+    "schema": {
+      "properties": {
+        "allowed_tools": {
+          "default": [],
+          "description": "Array of regex patterns for tool names that are allowed from this MCP server",
+          "icon": "DefaultProperty",
+          "items": {
+            "type": "string"
+          },
+          "title": "Allowed Tools",
+          "type": "array"
+        },
+        "description": {
+          "description": "Description of the MCP server",
+          "icon": "DefaultProperty",
+          "title": "Description",
+          "type": "string"
+        },
+        "exposed": {
+          "default": false,
+          "description": "If `true`, this MCP server will be available as a connector in the Port UI, Port AI, and Port MCP.",
+          "icon": "DefaultProperty",
+          "title": "Expose As Port Connector",
+          "type": "boolean"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom headers to inject when connecting to the MCP server. Use {{ .secrets[\"SECRET_NAME\"] }} to reference org secrets",
+          "icon": "DefaultProperty",
+          "title": "Headers",
+          "type": "object"
+        },
+        "oauth_config": {
+          "description": "OAuth configuration for servers without DCR support",
+          "icon": "Lock",
+          "properties": {
+            "client_id": {
+              "description": "OAuth client ID. Use {{ .secrets[\"SECRET_NAME\"] }} to reference org secrets",
+              "title": "Client ID",
+              "type": "string"
+            },
+            "client_secret": {
+              "description": "OAuth client secret. Use {{ .secrets[\"SECRET_NAME\"] }} to reference org secrets",
+              "title": "Client Secret",
+              "type": "string"
+            },
+            "scope": {
+              "description": "OAuth scope to request during authorization",
+              "title": "Scope",
+              "type": "string"
+            }
+          },
+          "title": "OAuth Config",
+          "type": "object"
+        },
+        "url": {
+          "description": "The URL of the MCP server",
+          "format": "url",
+          "icon": "Link",
+          "title": "URL",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url"
+      ]
+    },
+    "title": "MCP Server",
+    "updatedAt": "2026-06-05T18:36:41.205Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-08T13:57:44.166Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "icon": "Github",
+    "identifier": "githubTeam",
+    "mirrorProperties": {},
+    "relations": {
+      "organization": {
+        "many": false,
+        "required": false,
+        "target": "githubOrganization",
+        "title": "Organization"
+      }
+    },
+    "schema": {
+      "properties": {
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "link": {
+          "format": "url",
+          "title": "Link",
+          "type": "string"
+        },
+        "notification_setting": {
+          "title": "Notification Setting",
+          "type": "string"
+        },
+        "slug": {
+          "title": "Slug",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "GitHub Team",
+    "updatedAt": "2026-06-08T14:00:16.006Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-17T16:18:12.917Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "description": "A Jira project",
+    "icon": "Jira",
+    "identifier": "jiraProject",
+    "mirrorProperties": {},
+    "relations": {},
+    "schema": {
+      "properties": {
+        "url": {
+          "description": "URL to the project in Jira",
+          "format": "url",
+          "title": "Project URL",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "Jira Project",
+    "updatedAt": "2026-06-17T16:18:16.034Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-08T15:00:30.743Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "icon": "Alert",
+    "identifier": "incident",
+    "mirrorProperties": {
+      "service_on_call_slack": {
+        "path": "service.on_call_slack",
+        "title": "Service On-call Slack"
+      },
+      "service_title": {
+        "path": "service.$title",
+        "title": "Service Title"
+      }
+    },
+    "relations": {
+      "service": {
+        "many": false,
+        "required": true,
+        "target": "service",
+        "title": "Service"
+      }
+    },
+    "schema": {
+      "properties": {
+        "incident_triage": {
+          "format": "markdown",
+          "title": "Incident Triage",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "SEV1",
+            "SEV2",
+            "SEV3"
+          ],
+          "enumColors": {
+            "SEV1": "red",
+            "SEV2": "orange",
+            "SEV3": "yellow"
+          },
+          "title": "Severity",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "investigating",
+            "resolved"
+          ],
+          "enumColors": {
+            "investigating": "orange",
+            "open": "red",
+            "resolved": "green"
+          },
+          "title": "Status",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "severity",
+        "status",
+        "summary"
+      ]
+    },
+    "title": "Incident",
+    "updatedAt": "2026-06-08T15:02:18.766Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {
+      "failed_workflow_runs_30d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Workflow runs that ended in failure in the last 30 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            },
+            {
+              "operator": "=",
+              "property": "conclusion",
+              "value": "failure"
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Monthly Failed Workflow Runs",
+        "type": "number"
+      },
+      "failed_workflow_runs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Workflow runs that ended in failure in the last 7 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            },
+            {
+              "operator": "=",
+              "property": "conclusion",
+              "value": "failure"
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Weekly Failed Workflow Runs",
+        "type": "number"
+      },
+      "merged_prs_last_month": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Pull requests merged in the last 30 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Monthly PR Throughput",
+        "type": "number"
+      },
+      "merged_prs_last_week": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Pull requests merged in the last 7 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Weekly PR Throughput",
+        "type": "number"
+      },
+      "open_prs": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Open pull requests",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "status",
+              "value": "open"
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Open PRs",
+        "type": "number"
+      },
+      "pr_cycle_time": {
+        "calculationSpec": {
+          "averageOf": "total",
+          "calculationBy": "property",
+          "func": "average",
+          "measureTimeBy": "$createdAt",
+          "property": "cycle_time_hours"
+        },
+        "description": "Average time from PR creation to merge (last month)",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Monthly PR Cycle Time",
+        "type": "number"
+      },
+      "pr_cycle_time_weekly": {
+        "calculationSpec": {
+          "averageOf": "total",
+          "calculationBy": "property",
+          "func": "average",
+          "measureTimeBy": "$createdAt",
+          "property": "cycle_time_hours"
+        },
+        "description": "Average time from PR creation to merge (last week)",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "mergedAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Weekly PR Cycle Time",
+        "type": "number"
+      },
+      "stale_prs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Open PRs older than 7 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "status",
+              "value": "open"
+            },
+            {
+              "operator": "notBetween",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubPullRequest",
+        "title": "Stale PRs (7d+)",
+        "type": "number"
+      },
+      "workflow_runs_30d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total workflow runs in the last 30 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastMonth"
+              }
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Monthly Workflow Runs",
+        "type": "number"
+      },
+      "workflow_runs_7d": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Total workflow runs in the last 7 days",
+        "icon": "DefaultProperty",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "between",
+              "property": "createdAt",
+              "value": {
+                "preset": "lastWeek"
+              }
+            }
+          ]
+        },
+        "target": "githubWorkflowRun",
+        "title": "Weekly Workflow Runs",
+        "type": "number"
+      }
+    },
+    "calculationProperties": {
+      "cycle_time_trend": {
+        "calculation": "((.properties.pr_cycle_time // 0) - (.properties.pr_cycle_time_weekly // 0)) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly vs monthly PR cycle time — Improving, Stable, or Degrading",
+        "icon": "DefaultProperty",
+        "title": "PR Cycle Time Trend",
+        "type": "string"
+      },
+      "failure_rate_trend": {
+        "calculation": "((if (.properties.workflow_runs_30d != null and .properties.workflow_runs_30d != 0) then ((.properties.failed_workflow_runs_30d // 0) / .properties.workflow_runs_30d) * 100 | floor else 0 end) - (if (.properties.workflow_runs_7d != null and .properties.workflow_runs_7d != 0) then ((.properties.failed_workflow_runs_7d // 0) / .properties.workflow_runs_7d) * 100 | floor else 0 end)) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly failure rate vs monthly average — Improving, Stable, or Degrading",
+        "icon": "DefaultProperty",
+        "title": "Workflow Failure Rate Trend",
+        "type": "string"
+      },
+      "monthly_workflow_failure_rate": {
+        "calculation": "if (.properties.workflow_runs_30d != null and .properties.workflow_runs_30d != 0) then ((.properties.failed_workflow_runs_30d // 0) / .properties.workflow_runs_30d) * 100 | floor else 0 end",
+        "description": "Percentage of workflow runs that failed in the last 30 days",
+        "icon": "DefaultProperty",
+        "title": "Monthly Workflow Failure Rate (%)",
+        "type": "number"
+      },
+      "stale_pr_share_percent": {
+        "calculation": "if (.properties.open_prs != null and .properties.open_prs != 0) then (.properties.stale_prs_7d / .properties.open_prs) * 100 else 0 end",
+        "description": "Percentage of open PRs that are older than 7 days",
+        "icon": "DefaultProperty",
+        "title": "Stale PR Share (%)",
+        "type": "number"
+      },
+      "throughput_trend": {
+        "calculation": "((.properties.merged_prs_last_week // 0) * 30 - (.properties.merged_prs_last_month // 0) * 7) as $diff | if $diff \u003e 0 then \"Improving\" elif $diff \u003c 0 then \"Degrading\" else \"Stable\" end",
+        "colorized": true,
+        "colors": {
+          "Degrading": "red",
+          "Improving": "green",
+          "Stable": "blue"
+        },
+        "description": "Weekly vs monthly PR throughput rate — Improving, Stable, or Degrading",
+        "icon": "DefaultProperty",
+        "title": "PR Throughput Trend",
+        "type": "string"
+      },
+      "weekly_workflow_failure_rate": {
+        "calculation": "if (.properties.workflow_runs_7d != null and .properties.workflow_runs_7d != 0) then ((.properties.failed_workflow_runs_7d // 0) / .properties.workflow_runs_7d) * 100 | floor else 0 end",
+        "description": "Percentage of workflow runs that failed in the last 7 days",
+        "icon": "DefaultProperty",
+        "title": "Weekly Workflow Failure Rate (%)",
+        "type": "number"
+      }
+    },
+    "createdAt": "2026-06-08T13:57:44.568Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "icon": "Github",
+    "identifier": "githubRepository",
+    "mirrorProperties": {},
+    "ownership": {
+      "type": "Direct"
+    },
+    "relations": {
+      "githubTeams": {
+        "many": true,
+        "required": false,
+        "target": "githubTeam",
+        "title": "GitHub Teams"
+      }
+    },
+    "schema": {
+      "properties": {
+        "codeowners": {
+          "format": "markdown",
+          "title": "CODEOWNERS",
+          "type": "string"
+        },
+        "defaultBranch": {
+          "title": "Default branch",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "gitignore": {
+          "title": "Git Ignore",
+          "type": "string"
+        },
+        "language": {
+          "title": "Language",
+          "type": "string"
+        },
+        "last_push": {
+          "description": "Last commit to the main branch",
+          "format": "date-time",
+          "title": "Last Repository Push",
+          "type": "string"
+        },
+        "pr_template": {
+          "title": "PR Template",
+          "type": "string"
+        },
+        "readme": {
+          "format": "markdown",
+          "title": "README",
+          "type": "string"
+        },
+        "url": {
+          "format": "url",
+          "title": "Repository URL",
+          "type": "string"
+        },
+        "visibility": {
+          "title": "Visibility",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "GitHub Repository",
+    "updatedAt": "2026-06-08T14:00:32.271Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-08T13:57:43.788Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "icon": "Github",
+    "identifier": "githubWorkflowRun",
+    "mirrorProperties": {
+      "service_name": {
+        "path": "service.$title",
+        "title": "Service Name"
+      },
+      "workflow_current_result": {
+        "path": "workflow.result",
+        "title": "Workflow Current Result"
+      },
+      "workflow_name": {
+        "path": "workflow.path",
+        "title": "Workflow Name"
+      }
+    },
+    "ownership": {
+      "path": "service",
+      "title": "Owning Teams",
+      "type": "Inherited"
+    },
+    "relations": {
+      "pullRequests": {
+        "many": true,
+        "required": false,
+        "target": "githubPullRequest",
+        "title": "Pull Requests"
+      },
+      "repository": {
+        "many": false,
+        "required": false,
+        "target": "githubRepository",
+        "title": "Repository"
+      },
+      "service": {
+        "many": false,
+        "required": false,
+        "target": "service",
+        "title": "Service"
+      },
+      "workflow": {
+        "many": false,
+        "required": false,
+        "target": "githubWorkflow",
+        "title": "Workflow"
+      }
+    },
+    "schema": {
+      "properties": {
+        "conclusion": {
+          "enum": [
+            "success",
+            "failure",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "neutral",
+            "stale",
+            "startup_failure"
+          ],
+          "enumColors": {
+            "action_required": "yellow",
+            "cancelled": "lightGray",
+            "failure": "red",
+            "neutral": "lightGray",
+            "skipped": "lightGray",
+            "stale": "darkGray",
+            "startup_failure": "red",
+            "success": "green",
+            "timed_out": "orange"
+          },
+          "title": "Conclusion",
+          "type": "string"
+        },
+        "createdAt": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "headBranch": {
+          "title": "Head Branch",
+          "type": "string"
+        },
+        "link": {
+          "format": "url",
+          "title": "Link",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "runAttempt": {
+          "title": "Run Attempt",
+          "type": "number"
+        },
+        "runNumber": {
+          "title": "Run Number",
+          "type": "number"
+        },
+        "runStartedAt": {
+          "format": "date-time",
+          "title": "Run Started At",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "queued",
+            "in_progress",
+            "completed",
+            "waiting",
+            "requested",
+            "pending"
+          ],
+          "enumColors": {
+            "completed": "green",
+            "in_progress": "blue",
+            "pending": "yellow",
+            "queued": "lightGray",
+            "requested": "orange",
+            "waiting": "yellow"
+          },
+          "title": "Status",
+          "type": "string"
+        },
+        "triggeringActor": {
+          "title": "Triggering Actor",
+          "type": "string"
+        },
+        "updatedAt": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "GitHub Workflow Run",
+    "updatedAt": "2026-06-08T14:00:48.534Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {},
+    "createdAt": "2026-06-11T14:46:36.188Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "icon": "Server",
+    "identifier": "ec2_instance",
+    "mirrorProperties": {},
+    "relations": {},
+    "schema": {
+      "properties": {
+        "ami_id": {
+          "title": "AMI ID",
+          "type": "string"
+        },
+        "instance_id": {
+          "title": "AWS Instance ID",
+          "type": "string"
+        },
+        "instance_type": {
+          "enum": [
+            "t2.micro",
+            "t2.small",
+            "t2.medium",
+            "t3.micro",
+            "t3.small",
+            "t3.medium",
+            "t3.large",
+            "t3.xlarge",
+            "m5.large",
+            "m5.xlarge",
+            "c5.large",
+            "c5.xlarge"
+          ],
+          "enumColors": {
+            "c5.large": "purple",
+            "m5.large": "orange",
+            "t2.micro": "green",
+            "t3.medium": "blue",
+            "t3.micro": "green",
+            "t3.small": "blue"
+          },
+          "title": "Instance Type",
+          "type": "string"
+        },
+        "key_pair": {
+          "title": "Key Pair",
+          "type": "string"
+        },
+        "private_ip": {
+          "title": "Private IP",
+          "type": "string"
+        },
+        "public_ip": {
+          "title": "Public IP",
+          "type": "string"
+        },
+        "region": {
+          "enum": [
+            "us-east-1",
+            "us-east-2",
+            "us-west-1",
+            "us-west-2",
+            "eu-west-1",
+            "eu-west-2",
+            "eu-central-1",
+            "ap-southeast-1",
+            "ap-southeast-2",
+            "ap-northeast-1"
+          ],
+          "title": "AWS Region",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "running",
+            "stopping",
+            "stopped",
+            "terminated"
+          ],
+          "enumColors": {
+            "pending": "yellow",
+            "running": "green",
+            "stopped": "lightGray",
+            "stopping": "orange",
+            "terminated": "red"
+          },
+          "title": "Status",
+          "type": "string"
+        },
+        "vpc_id": {
+          "title": "VPC ID",
+          "type": "string"
+        }
+      },
+      "required": [
+        "instance_type",
+        "region"
+      ]
+    },
+    "title": "EC2 Instance",
+    "updatedAt": "2026-06-11T14:46:36.188Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {
+      "rules_passed": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Number of rule tests with the result \"passed\"",
+        "icon": "Rocket",
+        "query": {
+          "combinator": "and",
+          "rules": [
+            {
+              "operator": "=",
+              "property": "result",
+              "value": "Passed"
+            }
+          ]
+        },
+        "target": "_rule_result",
+        "title": "Rules passed",
+        "type": "number"
+      },
+      "rules_tested": {
+        "calculationSpec": {
+          "calculationBy": "entities",
+          "func": "count"
+        },
+        "description": "Number of rule tests run",
+        "icon": "Properties",
+        "target": "_rule_result",
+        "title": "Rules tested",
+        "type": "number"
+      }
+    },
+    "calculationProperties": {
+      "of_rules_passed": {
+        "calculation": "(.properties.rules_passed/.properties.rules_tested)*10000|round/100",
+        "colorized": false,
+        "icon": "LineChart",
+        "title": "% of rules passed",
+        "type": "number"
+      }
+    },
+    "createdAt": "2026-06-05T18:36:38.124Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "description": "This blueprint represents scorecards",
+    "icon": "Score",
+    "identifier": "_scorecard",
+    "mirrorProperties": {},
+    "relations": {},
+    "schema": {
+      "properties": {
+        "blueprint": {
+          "description": "The blueprint tested by this scorecard",
+          "format": "blueprints",
+          "icon": "General",
+          "title": "Blueprint",
+          "type": "string"
+        },
+        "filter": {
+          "description": "Filters entities that should be tested with this scorecard",
+          "icon": "Box",
+          "properties": {
+            "combinator": {
+              "enum": [
+                "and",
+                "or"
+              ],
+              "type": "string"
+            },
+            "conditions": {
+              "minItems": 1,
+              "type": "array"
+            }
+          },
+          "required": [
+            "combinator",
+            "conditions"
+          ],
+          "title": "Filter",
+          "type": "object"
+        },
+        "levels": {
+          "default": [
+            {
+              "color": "paleBlue",
+              "title": "Basic"
+            },
+            {
+              "color": "bronze",
+              "title": "Bronze"
+            },
+            {
+              "color": "silver",
+              "title": "Silver"
+            },
+            {
+              "color": "gold",
+              "title": "Gold"
+            }
+          ],
+          "description": "Defines the levels ladder for this scorecard",
+          "icon": "Columns",
+          "items": {
+            "properties": {
+              "color": {
+                "title": "Color",
+                "type": "string"
+              },
+              "title": {
+                "title": "Title",
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "color"
+            ],
+            "type": "object"
+          },
+          "title": "Levels",
+          "type": "array"
+        }
+      },
+      "required": [
+        "blueprint",
+        "levels"
+      ]
+    },
+    "title": "Scorecard",
+    "updatedAt": "2026-06-05T18:36:40.404Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "aggregationProperties": {},
+    "calculationProperties": {
+      "handlingDuration": {
+        "calculation": "if (.properties.resolutionDate != null and .properties.created != null) then ((.properties.resolutionDate[0:19] + \"Z\" | fromdateiso8601) - (.properties.created[0:19] + \"Z\" | fromdateiso8601)) / 86400 else null end",
+        "description": "The amount of time in days from issue creation to issue resolution",
+        "icon": "Clock",
+        "title": "Handling Duration (Days)",
+        "type": "number"
+      }
+    },
+    "createdAt": "2026-06-17T16:18:13.275Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "icon": "Jira",
+    "identifier": "jiraIssue",
+    "mirrorProperties": {},
+    "ownership": {
+      "path": "assignee",
+      "type": "Inherited"
+    },
+    "relations": {
+      "assignee": {
+        "many": false,
+        "required": false,
+        "target": "_user",
+        "title": "Assignee"
+      },
+      "jira_user_assignee": {
+        "many": false,
+        "required": false,
+        "target": "jiraUser",
+        "title": "Assignee (Jira User)"
+      },
+      "jira_user_reporter": {
+        "many": false,
+        "required": false,
+        "target": "jiraUser",
+        "title": "Reporter (Jira User)"
+      },
+      "parentIssue": {
+        "many": false,
+        "required": false,
+        "target": "jiraIssue",
+        "title": "Parent Issue"
+      },
+      "project": {
+        "description": "The Jira project that contains this issue",
+        "many": false,
+        "required": false,
+        "target": "jiraProject",
+        "title": "Project"
+      },
+      "reporter": {
+        "many": false,
+        "required": false,
+        "target": "_user",
+        "title": "Reporter"
+      },
+      "service": {
+        "many": false,
+        "required": false,
+        "target": "service",
+        "title": "Service"
+      },
+      "subtasks": {
+        "many": true,
+        "required": false,
+        "target": "jiraIssue",
+        "title": "Subtasks"
+      }
+    },
+    "schema": {
+      "properties": {
+        "components": {
+          "description": "The components related to this issue",
+          "title": "Components",
+          "type": "array"
+        },
+        "created": {
+          "description": "The created datetime of the issue",
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "creator": {
+          "description": "The user that created to the issue",
+          "format": "user",
+          "title": "Creator",
+          "type": "string"
+        },
+        "issueType": {
+          "description": "The type of the issue",
+          "title": "Type",
+          "type": "string"
+        },
+        "labels": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Labels",
+          "type": "array"
+        },
+        "priority": {
+          "description": "The priority of the issue",
+          "title": "Priority",
+          "type": "string"
+        },
+        "resolutionDate": {
+          "description": "The datetime the issue changed to a resolved state",
+          "format": "date-time",
+          "title": "Resolved At",
+          "type": "string"
+        },
+        "status": {
+          "description": "The status of the issue",
+          "title": "Status",
+          "type": "string"
+        },
+        "updated": {
+          "description": "The updated datetime of the issue",
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL to the issue in Jira",
+          "format": "url",
+          "title": "Issue URL",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "title": "Jira Issue",
+    "updatedAt": "2026-06-17T16:18:17.164Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  }
+]

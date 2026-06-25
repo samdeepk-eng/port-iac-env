@@ -1,0 +1,104 @@
+{
+  "_onboard_existing_team": {
+    "approve": {
+      "roles": [
+        "Admin",
+        "_team-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "execute": {
+      "ownedByTeam": true,
+      "roles": [
+        "Admin",
+        "Member",
+        "_team-moderator"
+      ],
+      "teams": [],
+      "users": []
+    }
+  },
+  "_onboard_your_user": {
+    "approve": {
+      "roles": [
+        "Admin",
+        "_user-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "execute": {
+      "ownedByTeam": true,
+      "roles": [
+        "Admin",
+        "Member",
+        "_user-moderator"
+      ],
+      "teams": [],
+      "users": []
+    }
+  },
+  "create_an_issue": {
+    "approve": {
+      "roles": [
+        "Admin",
+        "jiraIssue-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "execute": {
+      "ownedByTeam": true,
+      "roles": [
+        "Admin",
+        "Member",
+        "jiraIssue-moderator"
+      ],
+      "teams": [],
+      "users": []
+    }
+  },
+  "deploy_ec2": {
+    "approve": {
+      "roles": [
+        "Admin",
+        "ec2_instance-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "execute": {
+      "ownedByTeam": true,
+      "roles": [
+        "Admin",
+        "Member",
+        "ec2_instance-moderator"
+      ],
+      "teams": [],
+      "users": [
+        "samkohli+testenv@getport.io"
+      ]
+    }
+  },
+  "set_ownership": {
+    "approve": {
+      "roles": [
+        "Admin",
+        "_team-moderator"
+      ],
+      "teams": [],
+      "users": []
+    },
+    "execute": {
+      "ownedByTeam": true,
+      "roles": [
+        "Admin",
+        "Member",
+        "_team-moderator"
+      ],
+      "teams": [],
+      "users": []
+    }
+  }
+}

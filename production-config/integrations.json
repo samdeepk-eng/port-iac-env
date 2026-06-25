@@ -1,0 +1,591 @@
+[
+  {
+    "_id": "integration_QoLQQxQSq34bcI9R",
+    "_orgId": "org_9NHiyb1edFfcTZNc",
+    "actionsProcessingEnabled": true,
+    "arePortResourcesInitialized": true,
+    "changelogDestination": {},
+    "clientId": "",
+    "config": {
+      "resources": [
+        {
+          "kind": "organization",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"githubOrganization\"",
+                "identifier": ".login",
+                "properties": {
+                  "avatarUrl": ".avatar_url",
+                  "createdAt": ".created_at",
+                  "description": "if .description then .description else \"\" end",
+                  "id": ".id",
+                  "login": ".login",
+                  "nodeId": ".node_id",
+                  "publicRepos": ".public_repos",
+                  "updatedAt": ".updated_at",
+                  "url": ".url"
+                },
+                "relations": {
+                  "organization": "\"default-org\""
+                },
+                "title": ".login"
+              }
+            }
+          },
+          "selector": {
+            "query": "true"
+          }
+        },
+        {
+          "kind": "team",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"githubTeam\"",
+                "identifier": ".databaseId | tostring",
+                "properties": {
+                  "description": ".description",
+                  "link": ".url",
+                  "notification_setting": ".notificationSetting",
+                  "slug": ".slug"
+                },
+                "relations": {
+                  "organization": ".url | capture(\"orgs/(?\u003corg\u003e[^/]+)\") | .org"
+                },
+                "title": ".name"
+              }
+            }
+          },
+          "selector": {
+            "members": true,
+            "query": "true"
+          }
+        },
+        {
+          "kind": "user",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"githubUser\"",
+                "identifier": ".login",
+                "properties": {
+                  "email": ".email",
+                  "login": ".login"
+                },
+                "title": ".login"
+              }
+            }
+          },
+          "selector": {
+            "query": "true"
+          }
+        },
+        {
+          "kind": "repository",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"githubRepository\"",
+                "identifier": ".name",
+                "properties": {
+                  "codeowners": ".__includedFiles[\"CODEOWNERS\"]",
+                  "defaultBranch": ".default_branch",
+                  "description": "if .description then .description else \"\" end",
+                  "gitignore": ".__includedFiles[\".gitignore\"]",
+                  "language": "if .language then .language else \"\" end",
+                  "last_push": ".pushed_at",
+                  "pr_template": ".__includedFiles[\".github/pull_request_template.md\"]",
+                  "readme": ".__includedFiles[\"README.md\"]",
+                  "url": ".html_url",
+                  "visibility": "if .private then \"private\" else \"public\" end"
+                },
+                "relations": {
+                  "githubTeams": "[.__teams[].id | tostring]"
+                },
+                "title": ".name"
+              }
+            }
+          },
+          "selector": {
+            "include": [
+              "teams"
+            ],
+            "includedFiles": [
+              "README.md",
+              "CODEOWNERS",
+              ".gitignore",
+              ".github/pull_request_template.md"
+            ],
+            "query": "true"
+          }
+        },
+        {
+          "kind": "team",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"githubUser\"",
+                "identifier": ".item.login",
+                "relations": {
+                  "team": "[.parent.id | tostring]"
+                },
+                "title": ".item.login"
+              }
+            },
+            "itemsToParse": ".members.nodes"
+          },
+          "selector": {
+            "members": true,
+            "query": "true"
+          }
+        },
+        {
+          "kind": "pull-request",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"githubPullRequest\"",
+                "identifier": ".head.repo.name + \"-pr-\" + (.number | tostring)",
+                "properties": {
+                  "branch": ".head.ref",
+                  "closedAt": ".closed_at",
+                  "createdAt": ".created_at",
+                  "cycle_time_hours": "if .merged_at != null and .created_at != null then ((.merged_at | fromdateiso8601) - (.created_at | fromdateiso8601)) / 3600 else null end",
+                  "has_assignees": "(.assignees | length) != 0",
+                  "has_reviewers": "(.requested_reviewers | length) != 0",
+                  "link": ".html_url",
+                  "mergedAt": ".merged_at",
+                  "prNumber": ".number",
+                  "status": "if .merged_at != null then \"merged\" elif .state == \"closed\" then \"closed\" else \"open\" end"
+                },
+                "relations": {
+                  "assignees": {
+                    "combinator": "\"and\"",
+                    "rules": [
+                      {
+                        "operator": "\"in\"",
+                        "property": "\"git_hub_username\"",
+                        "value": "[.assignees[]?.login // empty]"
+                      }
+                    ]
+                  },
+                  "creator": {
+                    "combinator": "\"and\"",
+                    "rules": [
+                      {
+                        "operator": "\"=\"",
+                        "property": "\"git_hub_username\"",
+                        "value": ".user.login"
+                      }
+                    ]
+                  },
+                  "git_hub_assignees": "[.assignees[].login]",
+                  "git_hub_creator": ".user.login",
+                  "git_hub_reviewers": "[.requested_reviewers[].login]",
+                  "repository": ".head.repo.name",
+                  "reviewers": {
+                    "combinator": "\"and\"",
+                    "rules": [
+                      {
+                        "operator": "\"in\"",
+                        "property": "\"git_hub_username\"",
+                        "value": "[.requested_reviewers[]?.login // empty]"
+                      }
+                    ]
+                  },
+                  "service": {
+                    "combinator": "\"and\"",
+                    "rules": [
+                      {
+                        "operator": "\"=\"",
+                        "property": "\"github_repository_id\"",
+                        "value": ".head.repo.name"
+                      }
+                    ]
+                  }
+                },
+                "title": ".title"
+              }
+            }
+          },
+          "selector": {
+            "maxResults": 300,
+            "query": "true",
+            "since": 90,
+            "states": [
+              "open",
+              "closed"
+            ]
+          }
+        },
+        {
+          "kind": "workflow",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"githubWorkflow\"",
+                "identifier": "(.url | capture(\"repos/(?\u003crepo\u003e[^/]+/[^/]+)/\") | .repo) + (.id|tostring)",
+                "properties": {
+                  "createdAt": ".created_at",
+                  "link": ".html_url",
+                  "path": ".path",
+                  "status": ".state",
+                  "updatedAt": ".updated_at"
+                },
+                "relations": {
+                  "repository": ".url | capture(\"repos/[^/]+/(?\u003crepo\u003e[^/]+)/\") | .repo"
+                },
+                "title": ".name"
+              }
+            }
+          },
+          "selector": {
+            "query": "true"
+          }
+        },
+        {
+          "kind": "workflow-run",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"githubWorkflowRun\"",
+                "identifier": ".repository.full_name + (.id|tostring)",
+                "properties": {
+                  "conclusion": ".conclusion",
+                  "createdAt": ".created_at",
+                  "headBranch": ".head_branch",
+                  "link": ".html_url",
+                  "name": ".name",
+                  "runAttempt": ".run_attempt",
+                  "runNumber": ".run_number",
+                  "runStartedAt": ".run_started_at",
+                  "status": ".status",
+                  "triggeringActor": ".triggering_actor.login",
+                  "updatedAt": ".updated_at"
+                },
+                "relations": {
+                  "pullRequests": "if (.pull_requests | length) \u003e 0 then [.pull_requests[] | .head.repo.name + \"-pr-\" + (.number | tostring)] else null end",
+                  "repository": ".repository.name",
+                  "service": {
+                    "combinator": "\"and\"",
+                    "rules": [
+                      {
+                        "operator": "\"=\"",
+                        "property": "\"github_repository_id\"",
+                        "value": ".repository.name"
+                      }
+                    ]
+                  },
+                  "workflow": ".repository.full_name + (.workflow_id|tostring)"
+                },
+                "title": ".display_title"
+              }
+            }
+          },
+          "selector": {
+            "query": "(.head_branch | IN(\"main\", \"master\", \"production\")) and ((.created_at | fromdateiso8601) \u003e (now - 2592000))"
+          }
+        },
+        {
+          "kind": "workflow-run",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"githubWorkflow\"",
+                "identifier": ".repository.full_name + (.workflow_id|tostring)",
+                "properties": {
+                  "last_triggered_at": ".run_started_at",
+                  "result": ".conclusion"
+                },
+                "title": ".repository.full_name + (.workflow_id|tostring)"
+              }
+            }
+          },
+          "selector": {
+            "query": "(.head_branch | IN(\"main\", \"master\", \"production\")) and ((.created_at | fromdateiso8601) \u003e (now - 2592000))"
+          }
+        },
+        {
+          "kind": "pull-request",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"deployment\"",
+                "identifier": ".head.repo.name + \"-deploy-\" + (.number | tostring)",
+                "properties": {
+                  "createdAt": ".merged_at",
+                  "deploymentStatus": "\"Success\"",
+                  "environment": "\"Production\""
+                },
+                "relations": {
+                  "github_pull_request": ".head.repo.name + \"-pr-\" + (.number | tostring)",
+                  "service": {
+                    "combinator": "\"and\"",
+                    "rules": [
+                      {
+                        "operator": "\"=\"",
+                        "property": "\"github_repository_id\"",
+                        "value": ".head.repo.name"
+                      }
+                    ]
+                  }
+                },
+                "title": "\"Merge: \" + .title"
+              }
+            }
+          },
+          "selector": {
+            "maxResults": 300,
+            "query": ".base.ref == \"main\" and .state == \"closed\" and .merged_at != null",
+            "since": 90,
+            "states": [
+              "closed"
+            ]
+          }
+        }
+      ]
+    },
+    "createPortResourcesOrigin": "Port",
+    "createdAt": "2026-06-08T13:57:42.293Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "identifier": "github-ocean",
+    "ingestAttributes": {
+      "ingestUrl": "https://ingest.us.getport.io"
+    },
+    "installationAppType": "github-ocean",
+    "installationId": "github-ocean",
+    "installationType": "SaasOAuth2",
+    "integrationType": "github-ocean",
+    "lifecycleAttributes": {
+      "ingestUrl": "https://ingest.us.getport.io/v1/lifecycle"
+    },
+    "logAttributes": {
+      "ingestId": "HWWmTs9ETYkN1jxQ",
+      "ingestUrl": "https://ingest.us.getport.io/logs/integration/HWWmTs9ETYkN1jxQ"
+    },
+    "metricAttributes": {
+      "ingestUrl": "https://ingest.us.getport.io/metrics/integration/HWWmTs9ETYkN1jxQ"
+    },
+    "processingMode": "dsp",
+    "resyncState": {
+      "intervalInMinuets": 240,
+      "lastResyncEnd": "2026-06-25T13:57:22.900473+00:00",
+      "lastResyncStart": "2026-06-25T13:57:11.697161+00:00",
+      "nextResync": "2026-06-25T13:57:42.326000+00:00",
+      "status": "completed",
+      "updatedAt": "2026-06-25T13:57:22.907Z"
+    },
+    "spec": {
+      "appSpec": {
+        "actionsProcessingEnabled": true,
+        "lakehouseEnabled": true,
+        "liveEventsEnabled": true,
+        "liveEventsIngestHostname": "ingest.ocean.us.getport.io",
+        "liveEventsUuid": "2wPNQc5lbuzeUdsg",
+        "scheduledResyncInterval": "4h",
+        "sendRawDataExamples": true
+      },
+      "integrationSpec": {
+        "githubAppId": "3997901",
+        "githubAppInstallationId": "138867574",
+        "githubAppPrivateKey": "__GITHUB_OCEAN_GITHUB_OCEAN_GITHUB_APP_PRIVATE_KEY",
+        "githubHost": "https://api.github.com",
+        "githubOrganization": "samdeepk-eng"
+      },
+      "systemSpec": {
+        "size": "M"
+      }
+    },
+    "statusInfo": {
+      "createdAt": "2026-06-08T13:57:42.326Z",
+      "integrationStatus": {
+        "lastSyncedAt": "2026-06-08T13:59:12Z",
+        "status": "Running"
+      },
+      "updatedAt": "2026-06-08T13:57:42.326Z"
+    },
+    "updatedAt": "2026-06-25T13:57:22.907Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "version": "6.0.11"
+  },
+  {
+    "_id": "integration_SijAN11LHHlCHhYR",
+    "_orgId": "org_9NHiyb1edFfcTZNc",
+    "actionsProcessingEnabled": false,
+    "arePortResourcesInitialized": true,
+    "changelogDestination": {},
+    "clientId": "",
+    "config": {
+      "createMissingRelatedEntities": true,
+      "deleteDependentEntities": true,
+      "enableMergeEntity": true,
+      "resources": [
+        {
+          "kind": "user",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"jiraUser\"",
+                "identifier": ".accountId",
+                "properties": {
+                  "accountType": ".accountType",
+                  "active": ".active",
+                  "displayName": ".displayName",
+                  "emailAddress": ".emailAddress"
+                },
+                "title": ".displayName"
+              }
+            }
+          },
+          "selector": {
+            "query": "true"
+          }
+        },
+        {
+          "kind": "project",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"jiraProject\"",
+                "identifier": ".key",
+                "properties": {
+                  "url": "(.self | split(\"/\") | .[:3] | join(\"/\")) + \"/projects/\" + .key"
+                },
+                "title": ".name"
+              }
+            }
+          },
+          "selector": {
+            "query": "true"
+          }
+        },
+        {
+          "kind": "issue",
+          "port": {
+            "entity": {
+              "mappings": {
+                "blueprint": "\"jiraIssue\"",
+                "identifier": ".key",
+                "properties": {
+                  "components": ".fields.components",
+                  "created": ".fields.created",
+                  "creator": ".fields.creator.emailAddress",
+                  "issueType": ".fields.issuetype.name",
+                  "labels": ".fields.labels",
+                  "priority": ".fields.priority.name",
+                  "resolutionDate": ".fields.resolutiondate",
+                  "status": ".fields.status.name",
+                  "updated": ".fields.updated",
+                  "url": "(.self | split(\"/\") | .[:3] | join(\"/\")) + \"/browse/\" + .key"
+                },
+                "relations": {
+                  "assignee": {
+                    "combinator": "\"or\"",
+                    "rules": [
+                      {
+                        "operator": "\"=\"",
+                        "property": "\"jira_user_id\"",
+                        "value": ".fields.assignee.accountId // \"\""
+                      },
+                      {
+                        "operator": "\"=\"",
+                        "property": "\"$identifier\"",
+                        "value": ".fields.assignee.email // \"\""
+                      }
+                    ]
+                  },
+                  "jira_user_assignee": ".fields.assignee.accountId",
+                  "jira_user_reporter": ".fields.reporter.accountId",
+                  "parentIssue": ".fields.parent.key",
+                  "project": ".fields.project.key",
+                  "reporter": {
+                    "combinator": "\"or\"",
+                    "rules": [
+                      {
+                        "operator": "\"=\"",
+                        "property": "\"jira_user_id\"",
+                        "value": ".fields.reporter.accountId // \"\""
+                      },
+                      {
+                        "operator": "\"=\"",
+                        "property": "\"$identifier\"",
+                        "value": ".fields.reporter.email // \"\""
+                      }
+                    ]
+                  },
+                  "subtasks": ".fields.subtasks | map(.key)"
+                },
+                "title": ".fields.summary"
+              }
+            }
+          },
+          "selector": {
+            "jql": "(statusCategory != Done) OR (created \u003e= -1w) OR (updated \u003e= -1w)",
+            "query": "true"
+          }
+        }
+      ]
+    },
+    "createPortResourcesOrigin": "Port",
+    "createdAt": "2026-06-17T16:18:12.370Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "identifier": "jira",
+    "ingestAttributes": {
+      "ingestUrl": "https://ingest.us.getport.io"
+    },
+    "installationAppType": "jira",
+    "installationId": "jira",
+    "installationType": "SaasOAuth2",
+    "integrationType": "jira",
+    "lifecycleAttributes": {
+      "ingestUrl": "https://ingest.us.getport.io/v1/lifecycle"
+    },
+    "logAttributes": {
+      "ingestId": "ezidTnbgQ0Rn5n3y",
+      "ingestUrl": "https://ingest.us.getport.io/logs/integration/ezidTnbgQ0Rn5n3y"
+    },
+    "metricAttributes": {
+      "ingestUrl": "https://ingest.us.getport.io/metrics/integration/ezidTnbgQ0Rn5n3y"
+    },
+    "processingMode": "dsp",
+    "resyncState": {
+      "intervalInMinuets": null,
+      "lastResyncEnd": "2026-06-25T16:18:48.428527+00:00",
+      "lastResyncStart": "2026-06-25T16:18:07.617740+00:00",
+      "nextResync": null,
+      "status": "aborted",
+      "updatedAt": "2026-06-25T16:18:48.463Z"
+    },
+    "spec": {
+      "appSpec": {
+        "actionsProcessingEnabled": false,
+        "lakehouseEnabled": true,
+        "liveEventsEnabled": true,
+        "liveEventsIngestHostname": "ingest.ocean.us.getport.io",
+        "liveEventsUuid": "wNpodoDyfXEF1NwK",
+        "scheduledResyncInterval": "4h",
+        "sendRawDataExamples": true
+      },
+      "integrationSpec": {
+        "atlassianUserEmail": "__JIRA_JIRA_ATLASSIAN_USER_EMAIL",
+        "atlassianUserToken": "__JIRA_JIRA_ATLASSIAN_USER_TOKEN",
+        "jiraHost": "https://api.atlassian.com/ex/jira/33f08530-afd8-42fd-82cc-1dd5ebfeece8"
+      },
+      "systemSpec": {
+        "size": "M"
+      }
+    },
+    "statusInfo": {
+      "createdAt": "2026-06-17T16:18:12.414Z",
+      "integrationStatus": {
+        "lastSyncedAt": "2026-06-17T16:19:15Z",
+        "status": "Running"
+      },
+      "updatedAt": "2026-06-17T16:18:12.414Z"
+    },
+    "updatedAt": "2026-06-25T16:18:48.463Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "version": "0.7.45"
+  }
+]

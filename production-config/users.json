@@ -1,0 +1,29 @@
+[
+  {
+    "companyId": "company_8fknD9rm2fAqQLpP",
+    "companyRole": "ADMIN",
+    "createdAt": "2026-06-05T18:35:59.171Z",
+    "email": "samkohli+testenv@getport.io",
+    "firstName": "Sam",
+    "id": "user_H82lQjkBSpNIBqeS",
+    "isInvisible": false,
+    "lastName": "kohli",
+    "managedByScim": false,
+    "orgMembers": [
+      {
+        "status": "ACTIVE"
+      }
+    ],
+    "orgs": [],
+    "phoneNumber": "",
+    "picture": "https://s.gravatar.com/avatar/497016c24839e0c775fac32b6706b5b2?s=480\u0026r=pg\u0026d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fsa.png",
+    "providers": [
+      "port"
+    ],
+    "status": "ACTIVE",
+    "supportLevel": "",
+    "termsAccepted": false,
+    "type": "STANDARD",
+    "updatedAt": "2026-06-25T16:21:21.203Z"
+  }
+]

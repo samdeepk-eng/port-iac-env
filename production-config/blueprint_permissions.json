@@ -1,0 +1,3375 @@
+{
+  "_ai_agent": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_ai_agent-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_ai_agent-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_ai_agent-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_ai_agent-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "conversation_starters": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "description": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "execution_mode": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "labels": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "model": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "prompt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "provider": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "tools": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "_owning_teams": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "mcp_servers": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "_ai_conversation": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_ai_conversation-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_ai_conversation-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_ai_conversation-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_ai_conversation-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "asked_at": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "pinned": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "source": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "_owning_teams": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "asked_by": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "latest_invocation": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "_ai_invocations": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_ai_invocations-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_ai_invocations-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_ai_invocations-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_ai_invocations-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "asked_at": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "context_usage_percent": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "error": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "execution_logs": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "feedback_comment": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "feedback_rating": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "labels": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "model": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "prompt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "provider": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "quota": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "replied_at": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "response": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "source": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "summary": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "agent": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "asked_by": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "conversation": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "parent": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "_mcp_server": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_mcp_server-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_mcp_server-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_mcp_server-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_mcp_server-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "allowed_tools": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "description": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "exposed": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "headers": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "oauth_config": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "url": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "_owning_teams": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "_rule": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_rule-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_rule-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_rule-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_rule-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "level": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "query": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "rule_description": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "scorecard": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "_rule_result": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_rule_result-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_rule_result-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_rule_result-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_rule_result-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "entity": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "result": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "result_last_change": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "__team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "_organization": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "_owning_teams": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "_service": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "_slack_use_case": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "rule": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "_scorecard": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_scorecard-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_scorecard-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_scorecard-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_scorecard-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "blueprint": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "filter": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "levels": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {}
+    }
+  },
+  "_team": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_team-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_team-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_team-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_team-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "description": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "type": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "organization": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "parent_team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "_user": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "_user-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_user-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_user-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "_user-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "moderated_blueprints": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "port_role": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "port_type": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "_owning_teams": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "git_hub_user": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "jira_user": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "deployment": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "deployment-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "deployment-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "deployment-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "deployment-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "createdAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "deploymentStatus": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "environment": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "github_pull_request": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "service": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "ec2_instance": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "ec2_instance-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "ec2_instance-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "ec2_instance-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "ec2_instance-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "ami_id": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "instance_id": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "instance_type": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "key_pair": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "private_ip": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "public_ip": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "region": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "vpc_id": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {}
+    }
+  },
+  "environment": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "environment-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "environment-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "environment-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "environment-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {}
+    }
+  },
+  "githubOrganization": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "githubOrganization-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubOrganization-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubOrganization-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubOrganization-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "avatarUrl": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "createdAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "description": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "id": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "login": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "nodeId": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "publicRepos": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "updatedAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "url": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "organization": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "githubPullRequest": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "githubPullRequest-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubPullRequest-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubPullRequest-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubPullRequest-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "branch": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "closedAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "createdAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "cycle_time_hours": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "has_assignees": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "has_reviewers": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "lead_time_hours": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "link": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "mergedAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "prNumber": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "reviewDecision": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "assignees": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "creator": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "git_hub_assignees": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "git_hub_creator": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "git_hub_reviewers": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "repository": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "reviewers": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "service": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "githubRepository": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "githubRepository-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubRepository-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubRepository-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubRepository-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "codeowners": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "defaultBranch": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "description": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "gitignore": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "language": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "last_push": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "pr_template": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "readme": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "url": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "visibility": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "_owning_teams": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "githubTeams": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "githubTeam": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "githubTeam-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubTeam-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubTeam-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubTeam-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "description": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "link": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "notification_setting": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "slug": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "organization": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "githubUser": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "githubUser-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubUser-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubUser-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubUser-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "email": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "login": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "githubWorkflow": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "githubWorkflow-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubWorkflow-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubWorkflow-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubWorkflow-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "createdAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "last_triggered_at": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "link": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "path": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "result": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "updatedAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "repository": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "githubWorkflowRun": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "githubWorkflowRun-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubWorkflowRun-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubWorkflowRun-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "githubWorkflowRun-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "conclusion": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "createdAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "headBranch": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "link": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "name": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "runAttempt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "runNumber": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "runStartedAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "triggeringActor": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "updatedAt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "pullRequests": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "repository": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "service": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "workflow": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "incident": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "incident-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "incident-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "incident-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "incident-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "incident_triage": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "severity": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "summary": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "service": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "jiraIssue": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "jiraIssue-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "jiraIssue-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "jiraIssue-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "jiraIssue-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "components": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "created": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "creator": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "issueType": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "labels": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "priority": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "resolutionDate": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "updated": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "url": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "assignee": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "jira_user_assignee": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "jira_user_reporter": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "parentIssue": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "project": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "reporter": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "service": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "subtasks": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "jiraProject": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "jiraProject-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "jiraProject-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "jiraProject-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "jiraProject-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "url": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {}
+    }
+  },
+  "jiraUser": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "jiraUser-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "jiraUser-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "jiraUser-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "jiraUser-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "accountType": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "active": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "displayName": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "emailAddress": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {}
+    }
+  },
+  "organization": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "organization-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "organization-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "organization-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "organization-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {}
+    }
+  },
+  "service": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "service-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "service-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "service-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "service-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "criticality": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "on_call_slack": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "remediation_ref": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "remediation_repository_url": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "_owning_teams": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "dependencies": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "github_repository": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "slack_use_case": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "slack_use_case-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "slack_use_case-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "slack_use_case-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "slack_use_case-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "acceptanceCriteria": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "cursorPrompt": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "cursorRunUrl": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "priority": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "rawMessage": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "requestType": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "requesterEmail": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "requesterName": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "sourceChannel": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "sourceChannelId": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "sourceMessageTs": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "sourceMessageUrl": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "summary": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "targetBranch": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "targetRepositoryUrl": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "_owning_teams": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "github_repository": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "service": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "work_item": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "work_item-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "work_item-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "work_item-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "work_item-moderator"
+        ],
+        "teams": [],
+        "users": [
+          "samkohli+testenv@getport.io"
+        ]
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "description": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "eligibility_verdict": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "prd": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "priority": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "service_tier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "status": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "service": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  },
+  "workload": {
+    "entities": {
+      "read": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "Member",
+          "workload-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "register": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "workload-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "unregister": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "workload-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "update": {
+        "ownedByTeam": false,
+        "roles": [
+          "Admin",
+          "workload-moderator"
+        ],
+        "teams": [],
+        "users": []
+      },
+      "updateProperties": {
+        "$icon": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$identifier": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$team": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "$title": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "version": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      },
+      "updateRelations": {
+        "environment": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        },
+        "service": {
+          "ownedByTeam": false,
+          "roles": [],
+          "teams": [],
+          "users": []
+        }
+      }
+    }
+  }
+}

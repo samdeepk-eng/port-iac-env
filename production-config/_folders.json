@@ -1,0 +1,80 @@
+[
+  {
+    "_id": "folder_QLnQToOmiF1UYVh8",
+    "_orgId": "org_9NHiyb1edFfcTZNc",
+    "after": "slack_use_case_dashboard",
+    "createdAt": "2026-06-05T18:36:56.280Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "identifier": "manage_service_catalog",
+    "sidebar": "catalog",
+    "sidebarType": "folder",
+    "title": "Manage service catalog",
+    "updatedAt": "2026-06-05T18:36:56.280Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "_id": "folder_ZJbh3wVyiHyNade9",
+    "_orgId": "org_9NHiyb1edFfcTZNc",
+    "after": "manage_service_catalog",
+    "createdAt": "2026-06-05T18:36:34.625Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "identifier": "manage_users_and_teams",
+    "sidebar": "catalog",
+    "sidebarType": "folder",
+    "title": "Manage users and teams",
+    "updatedAt": "2026-06-05T18:36:34.625Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "_id": "folder_6R2TDGQZjQ7JNDYG",
+    "_orgId": "org_9NHiyb1edFfcTZNc",
+    "after": "manage_users_and_teams",
+    "createdAt": "2026-06-05T18:36:44.815Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "identifier": "engineering_intelligence",
+    "sidebar": "catalog",
+    "sidebarType": "folder",
+    "title": "Engineering intelligence",
+    "updatedAt": "2026-06-05T18:36:44.815Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  },
+  {
+    "_id": "folder_9C7MLdaICjRBytIJ",
+    "_orgId": "org_9NHiyb1edFfcTZNc",
+    "after": "engineering_intelligence",
+    "createdAt": "2026-06-05T18:36:38.099Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "identifier": "scorecard_catalog",
+    "sidebar": "catalog",
+    "sidebarType": "folder",
+    "title": "Manage scorecards",
+    "updatedAt": "2026-06-05T18:36:38.099Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "_id": "folder_yY3PRQrQHyAeHG4R",
+    "_orgId": "org_9NHiyb1edFfcTZNc",
+    "after": "scorecard_catalog",
+    "createdAt": "2026-06-05T18:36:41.177Z",
+    "createdBy": "user_H82lQjkBSpNIBqeS",
+    "identifier": "ai_assets",
+    "sidebar": "catalog",
+    "sidebarType": "folder",
+    "title": "Manage AI assets",
+    "updatedAt": "2026-06-05T18:36:41.177Z",
+    "updatedBy": "user_H82lQjkBSpNIBqeS"
+  },
+  {
+    "_id": "folder_Ph9g12CepRLWCYBE",
+    "_orgId": "org_9NHiyb1edFfcTZNc",
+    "after": "ai_assets",
+    "createdAt": "2026-06-05T18:36:44.833Z",
+    "createdBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E",
+    "identifier": "catalog_tables",
+    "sidebar": "catalog",
+    "sidebarType": "folder",
+    "title": "Catalog tables",
+    "updatedAt": "2026-06-05T18:36:44.833Z",
+    "updatedBy": "MegR6H7QSDVEWKnGRV4vcBIyKepMIn7E"
+  }
+]
