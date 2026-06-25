@@ -20,6 +20,13 @@ jobs:
           cd production-config
           tar -czf ../production-config.tar.gz .
       
+      - name: Verify secrets are set
+        run: |
+          echo "CLIENT_ID length: ${#PORT_CLIENT_ID}"
+          echo "CLIENT_SECRET length: ${#PORT_CLIENT_SECRET}"
+        env:
+          PORT_CLIENT_ID: ${{ secrets.PORT_CLIENT_ID }}
+          PORT_CLIENT_SECRET: ${{ secrets.PORT_CLIENT_SECRET }}
       - name: Import to Port
         run: |
           port import \
