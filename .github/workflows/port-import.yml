@@ -20,9 +20,10 @@ jobs:
         run: tar -czf production-config.tar.gz production-config/
       
       - name: Import to Port
-        env:
-          PORT_CLIENT_ID: ${{ secrets.PORT_CLIENT_ID }}
-          PORT_CLIENT_SECRET: ${{ secrets.PORT_CLIENT_SECRET }}
-          PORT_API_URL: https://api.us.getport.io/v1
         run: |
-          port import --input production-config.tar.gz --verbose
+          port import \
+            --input production-config.tar.gz \
+            --target-api-url https://api.us.getport.io \
+            --target-client-id ${{ secrets.PORT_CLIENT_ID }} \
+            --target-client-secret ${{ secrets.PORT_CLIENT_SECRET }} \
+            --verbose
