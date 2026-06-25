@@ -21,18 +21,18 @@ jobs:
           cd production-config
           tar -czf ../production-config.tar.gz .
 
-      - name: Debug tar contents
+      - name: Check port import flags
+        run: port import --help
+
+      - name: Authenticate Port CLI
         run: |
-          echo "=== Tar contents ==="
-          tar -tzf production-config.tar.gz
-          echo "=== production-config directory ==="
-          ls -la production-config/
-      
+          port auth login \
+            --client-id ${{ secrets.PORT_CLIENT_ID }} \
+            --client-secret ${{ secrets.PORT_CLIENT_SECRET }} \
+            --api-url https://api.us.getport.io/v1
+
       - name: Import to Port
         run: |
           port import \
             --input production-config.tar.gz \
-            --target-api-url https://api.us.getport.io/v1 \
-            --target-client-id ${{ secrets.PORT_CLIENT_ID }} \
-            --target-client-secret ${{ secrets.PORT_CLIENT_SECRET }} \
             --verbose
