@@ -15,9 +15,10 @@ jobs:
       
       - name: Install Port CLI
         run: npm install -g @port-experimental/port-cli
-      
       - name: Create tar.gz from config
-        run: tar -czf production-config.tar.gz production-config/
+        run: |
+          cd production-config
+          tar -czf ../production-config.tar.gz .
       
       - name: Import to Port
         run: |
