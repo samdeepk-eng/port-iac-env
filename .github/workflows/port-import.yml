@@ -33,6 +33,8 @@ jobs:
           entities_path = Path("${{ github.workspace }}/production-config/entities.json")
           entities = json.loads(entities_path.read_text(encoding="utf-8"))
 
+          READ_ONLY_FIELDS = {"createdAt", "updatedAt", "createdBy", "updatedBy"}
+
           def normalize_base(base: str) -> str:
               return base.rstrip("/")
 
@@ -102,13 +104,23 @@ jobs:
               if not entity_id:
                   raise SystemExit(f"Entity {index} is missing an identifier")
 
+              # Strip read-only top-level fields
+              clean_entity = {k: v for k, v in entity.items() if k not in READ_ONLY_FIELDS}
+
+              # Strip read-only fields from within properties too
+              clean_properties = {
+                  k: v for k, v in entity.get("properties", {}).items()
+                  if k not in READ_ONLY_FIELDS
+              }
+
               collection_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint)}/entities/"
               entity_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint)}/entities/{urllib.parse.quote(entity_id)}"
-              create_body = json.dumps(entity).encode("utf-8")
+
+              create_body = json.dumps(clean_entity).encode("utf-8")
               update_body = json.dumps({
-                  "identifier": entity.get("identifier"),
+                  "identifier": entity_id,
                   "title": entity.get("title"),
-                  "properties": entity.get("properties", {}),
+                  "properties": clean_properties,
                   "relations": entity.get("relations", {}),
               }).encode("utf-8")
 
