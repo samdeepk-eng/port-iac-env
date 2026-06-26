@@ -96,13 +96,23 @@ jobs:
               "Content-Type": "application/json",
           }
 
+          skipped = 0
+          imported = 0
+
           for index, entity in enumerate(entities, start=1):
               blueprint = entity.get("blueprint")
               entity_id = entity.get("identifier")
+
               if not blueprint:
                   raise SystemExit(f"Entity {index} is missing a blueprint")
               if not entity_id:
                   raise SystemExit(f"Entity {index} is missing an identifier")
+
+              # Skip system blueprint entities (identifiers starting with _)
+              if blueprint.startswith("_"):
+                  print(f"Skipping system blueprint entity {entity_id} ({blueprint})")
+                  skipped += 1
+                  continue
 
               # Strip read-only top-level fields
               clean_entity = {k: v for k, v in entity.items() if k not in READ_ONLY_FIELDS}
@@ -130,6 +140,7 @@ jobs:
                       req = Request(collection_endpoint, data=create_body, headers=headers, method="POST")
                       with urlopen(req, timeout=120) as response:
                           response.read()
+                      imported += 1
                       break
                   except HTTPError as exc:
                       if exc.code == 409:
@@ -138,6 +149,7 @@ jobs:
                                   req = Request(entity_endpoint, data=update_body, headers=headers, method=update_method)
                                   with urlopen(req, timeout=120) as response:
                                       response.read()
+                                  imported += 1
                                   break
                               except HTTPError as update_exc:
                                   if update_exc.code == 404 and update_method == "PATCH":
@@ -159,9 +171,9 @@ jobs:
                       raise SystemExit(f"Import failed for {entity_id} ({blueprint}): {exc}") from exc
 
               if index % 100 == 0:
-                  print(f"Imported {index}/{len(entities)} entities")
+                  print(f"Processed {index}/{len(entities)} entities")
 
-          print(f"Completed import of {len(entities)} entities")
+          print(f"Completed: {imported} imported, {skipped} system blueprint entities skipped")
           PY
 
       - name: Deployment Success
