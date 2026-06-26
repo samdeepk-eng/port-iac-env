@@ -106,8 +106,10 @@ jobs:
               entity_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint)}/entities/{urllib.parse.quote(entity_id)}"
               create_body = json.dumps(entity).encode("utf-8")
               update_body = json.dumps({
-                  key: value for key, value in entity.items()
-                  if key != "blueprint"
+                  "identifier": entity.get("identifier"),
+                  "title": entity.get("title"),
+                  "properties": entity.get("properties", {}),
+                  "relations": entity.get("relations", {}),
               }).encode("utf-8")
 
               for attempt in range(3):
