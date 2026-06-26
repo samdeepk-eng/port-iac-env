@@ -15,13 +15,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Prepare Port entities payload
+        run: |
+          echo "PORT_ENTITIES<<EOF" >> "$GITHUB_ENV"
+          cat "${{ github.workspace }}/production-config/entities.json" >> "$GITHUB_ENV"
+          echo "EOF" >> "$GITHUB_ENV"
+
       - name: Deploy blueprints to Port
         uses: port-labs/port-github-action@v1
         with:
           clientId: ${{ secrets.PORT_CLIENT_ID }}
           clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
           operation: BULK_UPSERT
-          entities: ${{ github.workspace }}/production-config/entities.json
+          entities: ${{ env.PORT_ENTITIES }}
 
       - name: Deployment Success
         if: success()
