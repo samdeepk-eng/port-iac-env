@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'port/**'
-      - '.github/workflows/port-deploy.yml'
+      - 'production-config/**'
+      - '.github/workflows/port-import.yml'
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
           clientId: ${{ secrets.PORT_CLIENT_ID }}
           clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
           operation: BULK_UPSERT
-          entities: ${{ github.workspace }}/port/entities.json
+          entities: ${{ github.workspace }}/production-config/entities.json
 
       - name: Deployment Success
         if: success()
