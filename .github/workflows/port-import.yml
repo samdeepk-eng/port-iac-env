@@ -33,7 +33,11 @@ jobs:
           entities_path = Path("${{ github.workspace }}/production-config/entities.json")
           entities = json.loads(entities_path.read_text(encoding="utf-8"))
 
-          READ_ONLY_FIELDS = {"createdAt", "updatedAt", "createdBy", "updatedBy"}
+          # Include ownership-related fields in read-only filtering so we don't send them to Port
+          READ_ONLY_FIELDS = {
+              "createdAt", "updatedAt", "createdBy", "updatedBy",
+              "owners", "owner", "ownership", "inheritedOwnership", "inherited_ownership", "assignedTo",
+          }
 
           def normalize_base(base: str) -> str:
               return base.rstrip("/")
@@ -123,6 +127,12 @@ jobs:
                   if k not in READ_ONLY_FIELDS
               }
 
+              # Replace properties in the entity with the cleaned version (or remove it)
+              if clean_properties:
+                  clean_entity["properties"] = clean_properties
+              else:
+                  clean_entity.pop("properties", None)
+
               # Use safe='' to ensure forward slashes in identifiers are URL-encoded
               collection_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint, safe='')}/entities/"
               entity_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint, safe='')}/entities/{urllib.parse.quote(entity_id, safe='')}"
@@ -143,6 +153,18 @@ jobs:
                       imported += 1
                       break
                   except HTTPError as exc:
+                      # Read body early so we can inspect errors (safe to ignore failures here)
+                      try:
+                          error_body = exc.read().decode("utf-8", "ignore")
+                      except Exception:
+                          error_body = ""
+
+                      # If Port rejects because blueprint uses inherited ownership, skip the entity
+                      if exc.code == 422 and "inherited_ownership_enabled" in error_body:
+                          print(f"Skipping {entity_id} ({blueprint}): inherited ownership enabled")
+                          skipped += 1
+                          break
+
                       if exc.code == 409:
                           for update_method in ("PATCH", "PUT"):
                               try:
@@ -162,7 +184,7 @@ jobs:
                       if exc.code in {429, 500, 502, 503, 504} and attempt < 2:
                           time.sleep(2 ** attempt)
                           continue
-                      error_body = exc.read().decode("utf-8", "ignore")
+                      # Fallback: raise with error body
                       raise SystemExit(f"Import failed for {entity_id} ({blueprint}): {exc.code} {error_body}") from exc
                   except URLError as exc:
                       if attempt < 2:
