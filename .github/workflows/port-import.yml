@@ -17,9 +17,20 @@ jobs:
 
       - name: Prepare Port entities payload
         run: |
-          echo "PORT_ENTITIES<<EOF" >> "$GITHUB_ENV"
-          cat "${{ github.workspace }}/production-config/entities.json" >> "$GITHUB_ENV"
-          echo "EOF" >> "$GITHUB_ENV"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+
+          payload_path = Path("${{ github.workspace }}/production-config/entities.json")
+          payload = payload_path.read_text()
+          delimiter = "PORT_ENTITIES_EOF_20260626"
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env_file:
+              env_file.write(f"PORT_ENTITIES<<{delimiter}\n")
+              env_file.write(payload)
+              if not payload.endswith("\n"):
+                  env_file.write("\n")
+              env_file.write(f"{delimiter}\n")
+          PY
 
       - name: Deploy blueprints to Port
         uses: port-labs/port-github-action@v1
