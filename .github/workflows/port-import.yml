@@ -113,8 +113,9 @@ jobs:
                   if k not in READ_ONLY_FIELDS
               }
 
-              collection_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint)}/entities/"
-              entity_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint)}/entities/{urllib.parse.quote(entity_id)}"
+              # Use safe='' to ensure forward slashes in identifiers are URL-encoded
+              collection_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint, safe='')}/entities/"
+              entity_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint, safe='')}/entities/{urllib.parse.quote(entity_id, safe='')}"
 
               create_body = json.dumps(clean_entity).encode("utf-8")
               update_body = json.dumps({
