@@ -15,30 +15,73 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Prepare Port entities payload
+      - name: Import entities to Port
+        env:
+          PORT_CLIENT_ID: ${{ secrets.PORT_CLIENT_ID }}
+          PORT_CLIENT_SECRET: ${{ secrets.PORT_CLIENT_SECRET }}
         run: |
           python3 - <<'PY'
-          from pathlib import Path
+          import json
           import os
+          import sys
+          import time
+          import urllib.parse
+          from pathlib import Path
+          from urllib.error import HTTPError, URLError
+          from urllib.request import Request, urlopen
 
-          payload_path = Path("${{ github.workspace }}/production-config/entities.json")
-          payload = payload_path.read_text()
-          delimiter = "PORT_ENTITIES_EOF_20260626"
-          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env_file:
-              env_file.write(f"PORT_ENTITIES<<{delimiter}\n")
-              env_file.write(payload)
-              if not payload.endswith("\n"):
-                  env_file.write("\n")
-              env_file.write(f"{delimiter}\n")
+          api_base = os.environ.get("PORT_API_BASE_URL", "https://api.port.io/v1")
+          entities_path = Path("${{ github.workspace }}/production-config/entities.json")
+          entities = json.loads(entities_path.read_text(encoding="utf-8"))
+
+          def get_access_token() -> str:
+              auth_url = f"{api_base}/auth/access_token"
+              payload = json.dumps({
+                  "clientId": os.environ["PORT_CLIENT_ID"],
+                  "clientSecret": os.environ["PORT_CLIENT_SECRET"],
+              }).encode("utf-8")
+              req = Request(auth_url, data=payload, headers={"Content-Type": "application/json"}, method="POST")
+              with urlopen(req, timeout=60) as response:
+                  data = json.load(response)
+              return data["accessToken"]
+
+          access_token = get_access_token()
+          headers = {
+              "Authorization": f"Bearer {access_token}",
+              "Content-Type": "application/json",
+          }
+
+          for index, entity in enumerate(entities, start=1):
+              blueprint = entity.get("blueprint")
+              if not blueprint:
+                  raise SystemExit(f"Entity {index} is missing a blueprint")
+
+              endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint)}/entities/"
+              body = json.dumps(entity).encode("utf-8")
+
+              for attempt in range(3):
+                  try:
+                      req = Request(endpoint, data=body, headers=headers, method="POST")
+                      with urlopen(req, timeout=120) as response:
+                          response.read()
+                      break
+                  except HTTPError as exc:
+                      if exc.code in {429, 500, 502, 503, 504} and attempt < 2:
+                          time.sleep(2 ** attempt)
+                          continue
+                      error_body = exc.read().decode("utf-8", "ignore")
+                      raise SystemExit(f"Import failed for {entity.get('identifier')} ({blueprint}): {exc.code} {error_body}") from exc
+                  except URLError as exc:
+                      if attempt < 2:
+                          time.sleep(2 ** attempt)
+                          continue
+                      raise SystemExit(f"Import failed for {entity.get('identifier')} ({blueprint}): {exc}") from exc
+
+              if index % 100 == 0:
+                  print(f"Imported {index}/{len(entities)} entities")
+
+          print(f"Completed import of {len(entities)} entities")
           PY
-
-      - name: Deploy blueprints to Port
-        uses: port-labs/port-github-action@v1
-        with:
-          clientId: ${{ secrets.PORT_CLIENT_ID }}
-          clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
-          operation: BULK_UPSERT
-          entities: ${{ env.PORT_ENTITIES }}
 
       - name: Deployment Success
         if: success()
