@@ -104,11 +104,15 @@ jobs:
 
               collection_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint)}/entities/"
               entity_endpoint = f"{api_base}/blueprints/{urllib.parse.quote(blueprint)}/entities/{urllib.parse.quote(entity_id)}"
-              body = json.dumps(entity).encode("utf-8")
+              create_body = json.dumps(entity).encode("utf-8")
+              update_body = json.dumps({
+                  key: value for key, value in entity.items()
+                  if key != "blueprint"
+              }).encode("utf-8")
 
               for attempt in range(3):
                   try:
-                      req = Request(collection_endpoint, data=body, headers=headers, method="POST")
+                      req = Request(collection_endpoint, data=create_body, headers=headers, method="POST")
                       with urlopen(req, timeout=120) as response:
                           response.read()
                       break
@@ -116,7 +120,7 @@ jobs:
                       if exc.code == 409:
                           for update_method in ("PATCH", "PUT"):
                               try:
-                                  req = Request(entity_endpoint, data=body, headers=headers, method=update_method)
+                                  req = Request(entity_endpoint, data=update_body, headers=headers, method=update_method)
                                   with urlopen(req, timeout=120) as response:
                                       response.read()
                                   break
