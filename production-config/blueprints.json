@@ -12,7 +12,7 @@
         "many": false,
         "required": false,
         "target": "service",
-        "title": "Service"
+        "title": "Service-testing"
       }
     },
     "schema": {
