@@ -1,45 +1,34 @@
-name: Import Port Config
+name: Deploy to Port
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
-      - 'production-config/**'
+      - 'port/**'
+      - '.github/workflows/port-deploy.yml'
+  workflow_dispatch:
 
 jobs:
-  import:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Install Port CLI
-        run: npm install -g @port-experimental/port-cli
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Create tar.gz from config
-        run: |
-          cd production-config
-          tar -czf ../production-config.tar.gz .
+      - name: Deploy blueprints to Port
+        uses: port-labs/port-github-action@v1
+        with:
+          clientId: ${{ secrets.PORT_CLIENT_ID }}
+          clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
+          operation: BULK_UPSERT
+          entities: ${{ github.workspace }}/port/entities.json
 
-      - name: Create Port CLI config
-        run: |
-          mkdir -p ~/.port
-          cat > ~/.port/config.yaml << EOF
-          default_org: sam-testing
-          organizations:
-            sam-testing:
-              client_id: ${{ secrets.PORT_CLIENT_ID }}
-              client_secret: ${{ secrets.PORT_CLIENT_SECRET }}
-              api_url: https://api.us.getport.io/v1
-          backend:
-            url: https://api.us.getport.io/v1
-            timeout: 300
-          EOF
+      - name: Deployment Success
+        if: success()
+        run: echo "✅ Port deployment completed successfully"
 
-      - name: Import to Port
+      - name: Deployment Failed
+        if: failure()
         run: |
-          port import \
-            --input production-config.tar.gz \
-            --skip-entities \
-            --yes \
-            --verbose
+          echo "❌ Port deployment failed"
+          exit 1
