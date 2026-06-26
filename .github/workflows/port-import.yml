@@ -30,22 +30,65 @@ jobs:
           from urllib.error import HTTPError, URLError
           from urllib.request import Request, urlopen
 
-          api_base = os.environ.get("PORT_API_BASE_URL", "https://api.port.io/v1")
           entities_path = Path("${{ github.workspace }}/production-config/entities.json")
           entities = json.loads(entities_path.read_text(encoding="utf-8"))
 
-          def get_access_token() -> str:
-              auth_url = f"{api_base}/auth/access_token"
+          def normalize_base(base: str) -> str:
+              return base.rstrip("/")
+
+          def get_api_base() -> str:
+              candidates = []
+              for env_name in ("PORT_API_BASE_URL", "PORT_BASE_URL"):
+                  value = os.environ.get(env_name)
+                  if value:
+                      candidates.append(value)
+              candidates.extend([
+                  "https://api.getport.io/v1",
+                  "https://api.port.io/v1",
+                  "https://api.us.port.io/v1",
+              ])
+
+              for candidate in candidates:
+                  base = normalize_base(candidate)
+                  auth_url = f"{base}/auth/access_token"
+                  payload = json.dumps({
+                      "clientId": os.environ["PORT_CLIENT_ID"],
+                      "clientSecret": os.environ["PORT_CLIENT_SECRET"],
+                  }).encode("utf-8")
+                  req = Request(auth_url, data=payload, headers={"Content-Type": "application/json"}, method="POST")
+                  try:
+                      with urlopen(req, timeout=60) as response:
+                          data = json.load(response)
+                      if data.get("accessToken"):
+                          print(f"Using Port API base URL: {base}")
+                          return base
+                  except HTTPError as exc:
+                      if exc.code not in {404, 405, 422}:
+                          raise
+                      print(f"Skipping Port API base URL {base}: HTTP {exc.code}")
+                  except URLError as exc:
+                      print(f"Skipping Port API base URL {base}: {exc}")
+
+              raise SystemExit("Unable to reach a valid Port API authentication endpoint")
+
+          api_base = get_api_base()
+          access_token = None
+          for candidate in [api_base]:
+              auth_url = f"{candidate}/auth/access_token"
               payload = json.dumps({
                   "clientId": os.environ["PORT_CLIENT_ID"],
                   "clientSecret": os.environ["PORT_CLIENT_SECRET"],
               }).encode("utf-8")
               req = Request(auth_url, data=payload, headers={"Content-Type": "application/json"}, method="POST")
-              with urlopen(req, timeout=60) as response:
-                  data = json.load(response)
-              return data["accessToken"]
+              try:
+                  with urlopen(req, timeout=60) as response:
+                      data = json.load(response)
+                  access_token = data["accessToken"]
+                  break
+              except HTTPError as exc:
+                  error_body = exc.read().decode("utf-8", "ignore")
+                  raise SystemExit(f"Port authentication failed for {candidate}: {exc.code} {error_body}") from exc
 
-          access_token = get_access_token()
           headers = {
               "Authorization": f"Bearer {access_token}",
               "Content-Type": "application/json",
