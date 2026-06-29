@@ -1,0 +1,42 @@
+name: Port Terraform Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    env:
+      PORT_CLIENT_ID: ${{ secrets.PORT_CLIENT_ID }}
+      PORT_CLIENT_SECRET: ${{ secrets.PORT_CLIENT_SECRET }}
+      PORT_BASE_URL: ${{ vars.PORT_BASE_URL || 'https://api.getport.io' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false
+
+      - name: Terraform init
+        run: terraform -chdir=terraform init -input=false
+
+      - name: Terraform validate
+        run: terraform -chdir=terraform validate
+
+      - name: Terraform plan
+        run: |
+          terraform -chdir=terraform plan \
+            -input=false \
+            -var="port_client_id=${PORT_CLIENT_ID}" \
+            -var="port_client_secret=${PORT_CLIENT_SECRET}" \
+            -var="port_base_url=${PORT_BASE_URL}"
+
+      - name: Terraform apply
+        run: |
+          terraform -chdir=terraform apply -auto-approve \
+            -input=false \
+            -var="port_client_id=${PORT_CLIENT_ID}" \
+            -var="port_client_secret=${PORT_CLIENT_SECRET}" \
+            -var="port_base_url=${PORT_BASE_URL}"
